@@ -82,18 +82,19 @@ export default function Hangout() {
       {slug.charAt(0).toUpperCase() + slug.slice(1)} hangout spots <span style={{fontSize:22, color:'grey'}}>({placeData.length})</span>
     </h2>
 
-      <div className="flex flex-row flex-wrap gap-3 cursor-pointer mb-8">
-        {places.slice(0,20).map((data, index) => (
-            <span 
-            key={index} 
-            style={{fontSize:20 }}
-            onClick={() => navigate(`/hangout/${data.slug}`)} 
-            className="bg-white px-3 py-1 rounded-full font-semibold shadow-md"
-            >
-            {data.name}
-            </span>
-        ))}
-      </div>
+    <div className="flex flex-wrap gap-3 cursor-pointer mb-8">
+    {places.slice(0, 9).map((data, index) => (
+      <span
+        key={index}
+        style={{ fontSize: 20 }}
+        onClick={() => navigate(`/hangout/${data.slug}`)}
+        className="bg-white px-3 py-1 rounded-full font-semibold shadow-md"
+      >
+        {data.name}
+      </span>
+    ))}
+  </div>
+
 
        {loading ? (
         <div className="fixed inset-0 flex  items-center justify-center bg-black/30 backdrop-blur-md z-50">

@@ -15,8 +15,17 @@ import Avatar from "../assets/images (7).png";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Share,} from "@mui/icons-material";
 const apiKey2 = import.meta.env.VITE_API_KEY;
+import { FaUtensils, FaSwimmingPool, FaWifi, FaDumbbell, FaSpa } from 'react-icons/fa';
 
 const HotelListing = () => {
+
+  const amenityIcons = {
+    "Restaurant": <FaUtensils />,
+    "Refrigerator": <FaSwimmingPool />,
+    "Wifi": <FaWifi />,
+    "Garden view": <FaDumbbell />,
+    "Pool": <FaSpa />,
+  };
 
   const { slug } = useParams();
   const [hotellisting, setHotelListing] = useState([]);
@@ -168,9 +177,11 @@ const HotelListing = () => {
           }
       };
       const handleSendMessage2 = async () => {
-        if (!username || !email || !phone || !message) {
+
+        
+        if ( !username || !email || !phone || !message) {
           
-          toast.error("Please fill in all fields before submitting!", { position: "top-right", autoClose: 3000 });
+          toast.error("Please Login and fill in all fields before submitting!", { position: "top-right", autoClose: 3000 });
           return;
         }
         try {
@@ -337,10 +348,25 @@ const HotelListing = () => {
                 {/* Offered Amenities Section */}
                 <h2 className="text-2xl font-semibold text-gray-900">Offered Amenities</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4 text-gray-700">
-                    <div className="flex items-center space-x-3">
-                      {aminities}
-                   
-                    </div>
+    
+
+                <div className="flex flex-wrap gap-3 mt-2">
+                  {aminities?.split(",").map((item, index) => {
+                    const trimmedItem = item.trim();
+                    return (
+                      <div
+                        key={index}
+                        className="flex items-center gap-2 bg-blue-50 text-blue-800 px-3 py-1 rounded-full text-sm"
+                      >
+                        <span className="text-base">
+                          {amenityIcons[trimmedItem] || ''} 
+                        </span>
+                        <span>{trimmedItem}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+
                    
                    
                 </div>
@@ -454,7 +480,7 @@ const HotelListing = () => {
 </div>
 
 {/* Review Submission Form ************************************************/}
-<div className="max-w-lg mt-8 p-8 bg-white rounded-2xl shadow-xl border border-gray-300">
+<div className="max-w-lg mt-8 p-8 bg-gray-100 rounded-2xl shadow-xl border border-gray-300">
   {/* Title */}
   <h2 className="text-2xl font-bold mb-4 text-gray-900 flex items-center">
     <span className="text-orange-500 text-3xl mr-2">★</span> Rate & Review <span className="ml-1 text-orange-600">{name}</span>
@@ -467,7 +493,7 @@ const HotelListing = () => {
     form={form} 
     layout="vertical" 
     onFinish={handleFinish} 
-    className="bg-gray-100 p-6 rounded-xl shadow-md"
+    className="bg-gray-100 p-6 rounded-xl"
   >
     {/* Rating Input */}
     <Form.Item

@@ -132,7 +132,11 @@ const PremiumHangoutPage = () => {
           {places.map((place, index) => (
             <motion.div
               key={index}
-              onClick={() => navigate(`/hangout/${place.slug}`)} 
+              onClick={() => {
+                navigate(`/hangout/${place.slug}`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              
               className="relative bg-white shadow rounded-2xl overflow-hidden hover:shadow-2xl transition-all cursor-pointer"
               whileHover={{ scale: 1.05 }}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -177,69 +181,69 @@ const PremiumHangoutPage = () => {
           <h3 style={{fontFamily:'cursive'}} className="mx-auto text-center p-5 mt-10 rounded-full">More Comming Soon....</h3>
         </div>
         {/* bg-gradient-to-r from-orange-100 */}
-        <div className="flex flex-col lg:flex-row items-center mt-20 gap-12 p-14 mx-auto rounded-3xl  bg-white">
-      {/* Image Section */}
-      <motion.img
+        
+        
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between mt-10 gap-10 max-w-7xl mx-auto bg-white rounded-3xl ">
+        <motion.img
         src={design}
         alt="Discover Ossh"
-        className="w-30 h-auto object-cover "
+        className="w-40 max-w-xs sm:max-w-sm lg:max-w-md h-auto object-contain"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
       />
+  {/* Text and People Section */}
+  <section className="w-full  bg-gray-100 p-6 sm:p-10 rounded-2xl shadow-inner text-center">
+    <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+      Find Your Perfect Hangout Partner
+    </h2>
+    <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
+      Connect with like-minded individuals on <span className="font-bold text-orange-600">Ossh</span>. Whether you're looking for adventure, meaningful conversations, or a casual meetup, we help you find the right company.
+    </p>
 
-      {/* Content Section */}
-      <section className="relative bg-gray-50 flex flex-col items-center text-center  p-10 rounded-2xl shadow-md">
-        <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-          Find Your Perfect Hangout Partner
-        </h2>
-        <p className="text-lg md:text-xl mt-6 text-gray-700 leading-relaxed max-w-3xl">
-          Connect with like-minded individuals on{' '}
-          <span className="font-bold text-orange-600">Ossh</span>. Whether you're looking for adventure, meaningful
-          conversations, or a casual meetup, we help you find the right company.
-        </p>
-
-        {/* List of People */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12 w-full">
-          {people.slice(0, 6).map((user, index) => (
-            <motion.div
-              key={index}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all flex flex-col items-center gap-4 border border-gray-200 p-6"
-              whileHover={{ scale: 1.05 }}
-            >
-              <img
-                src={user.img}
-                alt={user.title}
-                className="w-24 h-24 rounded-full object-cover border-4 border-orange-500 shadow-md -mt-12"
-              />
-              <div className="text-center">
-                <h3 className="text-xl font-semibold text-gray-900">{user.title}</h3>
-                <p className="text-green-600 font-medium">🟢 Available</p>
-              </div>
-              <a
-                href="https://ooshlink.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-1 px-6 py-2 flex items-center bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-all shadow-md"
-              >
-                <UserPlus className="mr-2 w-5 h-5" />
-                Connect
-              </a>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* View More Button */}
-        <a
-          href="https://ooshlink.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-10 px-10 py-4 border border-orange-600 text-orange-600 font-semibold text-lg rounded hover:text-white hover:bg-orange-700 transition-all"
+    {/* People Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 sm:mt-10 px-2 sm:px-0">
+      {people.slice(0, 6).map((user, index) => (
+        <motion.div
+          key={index}
+          className="bg-white rounded-xl p-5 flex flex-col items-center text-center shadow-sm hover:shadow-lg border border-gray-100 transition"
+          whileHover={{ scale: 1.03 }}
         >
-          Explore More
-        </a>
-      </section>
+          <img
+            src={user.img}
+            alt={user.title}
+            className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-4 border-orange-500 shadow -mt-12"
+          />
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mt-4">{user.title}</h3>
+          <p className="text-green-600 text-sm font-medium">🟢 Available</p>
+          <a
+            href="https://ooshlink.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 px-5 py-2 bg-orange-600 text-white text-sm font-medium rounded-md hover:bg-orange-700 transition-all"
+          >
+            <UserPlus className="inline-block mr-2 w-4 h-4" />
+            Connect
+          </a>
+        </motion.div>
+      ))}
     </div>
+
+    {/* Explore Button */}
+    <a
+      href="https://ooshlink.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block mt-10 px-8 py-3 border border-orange-600 text-orange-600 font-semibold text-base sm:text-lg rounded-lg hover:bg-orange-600 hover:text-white transition-all"
+    >
+      Explore More
+    </a>
+  </section>
+
+  {/* Image Section */}
+  
+</div>
+
       </div>
     </div>
   );

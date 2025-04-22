@@ -23,8 +23,8 @@ const FunPlaces = () => {
   };
 
   return (
-    <div className="w-full text-center py-10 mt-10">
-      <h2 className="text-3xl font-bold mb-6">Fun Places with Family and Friends</h2>
+    <div className="w-full text-center py-10 mt-10 px-4">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6">Fun Places with Family and Friends</h2>
 
       {/* Categories - Scrollable on Mobile */}
       <div 
@@ -37,7 +37,7 @@ const FunPlaces = () => {
             className="relative w-60 h-60 md:w-72 md:h-72 rounded-lg overflow-hidden shadow-lg flex-shrink-0"
           >
             <img src={cat.image} alt={cat.name} className="w-full h-full object-cover" />
-            <div className="absolute bottom-0 w-full bg-black/50 text-white py-2 text-lg font-semibold">
+            <div className="absolute bottom-0 w-full bg-black/50 text-white py-2 text-sm md:text-lg font-semibold">
               {cat.name}
             </div>
           </div>
@@ -46,8 +46,8 @@ const FunPlaces = () => {
 
       {/* Featured Resort */}
       <div className="relative mt-10 w-full mx-auto overflow-hidden">
-        <img src={resortImg} alt="Resort" className="w-full h-96 object-cover" />
-        <div className="absolute inset-0 bg-black/40 "></div>
+        <img src={resortImg} alt="Resort" className="w-full h-60 sm:h-80 md:h-96 object-cover" />
+        <div className="absolute inset-0 bg-black/40"></div>
 
         <motion.button
           whileHover={{ y: -3 }}

@@ -1,0 +1,50 @@
+
+
+  {
+    "home": {
+      "heading": "El mundo sigue adelante",
+      "subheading": "nosotros también.",
+      "description": "Vive una nueva forma de descubrir, conectar y pasar el rato con personas afines. Desde eventos sociales vibrantes hasta reuniones exclusivas, estamos trayendo el futuro de los encuentros sociales a tu alcance. Explora. Conecta. Disfruta."
+    },
+    "nav": {
+      "home": "Inicio",
+      "hangout": "Lugares para reunirse",
+      "lovers": "Lugar de Enamorados",
+      "live": "Eventos en Vivo",
+      "showcase": "Exhibición",
+      "golive": "Transmitir en Vivo",
+      "about": "Acerca de",
+      "business": "Para Empresas"
+    },
+    
+      "hero": {
+        "title": "Finde",
+        "typed": [
+          "Wo der Spaß ist",
+          "Spannende Events",
+          "Tolle Treffpunkte"
+        ],
+        "description": "Finde Veranstaltungen und Orte zum Abhängen",
+        "placeholder": "Suche nach Treffpunkten nach Name oder Ort...",
+        "search": "Suchen",
+        "popular": "Búsquedas populares",
+        "location": "mundo"
+        
+      },
+      "mostsearch": {
+          "Lounges": "Salas",
+          "Restaurants": "Restaurantes",
+          "Night Clubs": "Discotecas",
+          "Museums": "Museos",
+          "Beaches": "Playas",
+          "Shopping malls": "Centros comerciales",
+          "Poolside": "Albercas",
+          "Bars": "Bares"
+        },
+        "partners": {
+          "title": "Con la confianza de las principales marcas",
+          "description": "Colaboramos con marcas reconocidas a nivel mundial para brindarte las mejores experiencias."
+        }
+
+  }
+  

@@ -46,92 +46,51 @@ const Showcase = () => {
     <div className="bg-white min-h-screen text-gray-900">
       
       {/* Hero Section */}
-      <section className="flex flex-col md:flex-row items-center justify-between ">
-        
-              <div className="flex flex-col md:flex-row items-center justify-between md:px-20 py-16 bg-white">
-              {/* Left Section */}
-              <div className="md:w-1/2 text-left space-y-6">
-                <h1 className="text-6xl font-extrabold text-gray-900 leading-tight"> Where All The Fun <span className="text-orange-600">Memories Begin</span></h1>
-                <ul className="space-y-4 text-gray-700">
-                  {[
-                    "Discover top-rated hangout spots near you",
-                    "Join a growing community of fun-seekers",
-                    "Easily connect with businesses for reservations",
-                  ].map((item, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.2 }}
-                      className="flex items-center space-x-3 text-lg"
-                    >
-                      <span className="text-red-600 text-xl">✔</span>
-                      <span>{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-                <motion.button
-                 onClick={redirect}
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-red-600 cursor-pointer text-white px-8 py-4 rounded-lg font-bold shadow-lg hover:bg-red-700 transition"
-                >
-                 Explore Place <ArrowForwardIosIcon/>
-                </motion.button>
-                {isModalOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="fixed inset-0 flex items-center justify-center bg-black/50 bg-opacity-70 z-50"
-                  >
-                    <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-md text-center relative">
-                      <button className="absolute top-3 right-3 text-gray-600 hover:text-gray-900" onClick={toggleModal}>
-                        <CloseIcon fontSize="large" />
-                      </button>
-                      <h2 className="text-2xl font-bold text-gray-900 mb-4">List Your Hangout Spot</h2>
-                      <div className="flex flex-col space-y-4">
-                        <button onClick={redirectToDetails} className="flex items-center cursor-pointer space-x-3 bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
-                          <HotelIcon className="text-blue-500 text-2xl" />
-                          <span className="text-gray-900 font-medium">Hotel</span>
-                        </button>
-                        <button onClick={redirectToDetails2} className="flex items-center cursor-pointer space-x-3 bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
-                          <LocalBarIcon className="text-green-500 text-2xl" />
-                          <span className="text-gray-900 font-medium">Hangout Spot</span>
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </div>
-               
-              {/* Right Section - Image with Chat Overlays */}
-              <div className="md:w-1/2 relative mt-10 md:mt-0 flex justify-center">
-                <div className="relative w-[650px] h-[600px] rounded-lg overflow-hidden shadow-xl">
-                  <img whileHover={{scale:6.07}} src={Images} alt="People Enjoying Hangout" className="rounded-lg w-full h-full object-cover" />
-                </div>
-        
-                {/* Chat Bubbles */}
-                {[
-                  { text: "Can I list my hangout spot here?", sender: "Message from Abby", position: "top-4 left-4" },
-                  { text: "Yes! We’d love to have you on board!", sender: "Hangout Team", position: "top-24 left-16" },
-                  { text: "⭐⭐⭐⭐⭐ Great experience! Highly recommended!", sender: "", position: "bottom-16 right-4" },
-                  { text: "Thank you! We appreciate your support!", sender: "Hangout Team", position: "bottom-4 right-16" },
-                ].map((msg, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.3 }}
-                    className={`absolute ${msg.position} bg-white backdrop-blur-md p-4 shadow-md rounded-lg text-sm w-48`}
-                  >
-                    {msg.sender && <p className="font-semibold text-gray-800">{msg.sender}</p>}
-                    <p className="text-gray-600">{msg.text}</p>
-                  </motion.div>
-                ))}
-              </div>
-              
-            </div>
-      </section>
+      <section className="flex flex-col md:flex-row items-center justify-between px-4 md:px-20 py-16 bg-white">
+  {/* Left Section */}
+  <div className="md:w-1/2 text-left space-y-6">
+    <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+      Where All The Fun <span className="text-orange-600">Memories Begin</span>
+    </h1>
+    <ul className="space-y-4 text-gray-700">
+      {[
+        "Discover top-rated hangout spots near you",
+        "Join a growing community of fun-seekers",
+        "Easily connect with businesses for reservations",
+      ].map((item, index) => (
+        <motion.li
+          key={index}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: index * 0.2 }}
+          className="flex items-center space-x-3 text-base md:text-lg"
+        >
+          <span className="text-red-600 text-xl">✔</span>
+          <span>{item}</span>
+        </motion.li>
+      ))}
+    </ul>
+    <motion.button
+      onClick={redirect}
+      whileHover={{ scale: 1.05 }}
+      className="bg-red-600 cursor-pointer text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-bold shadow-lg hover:bg-red-700 transition"
+    >
+      Explore Place <ArrowForwardIosIcon />
+    </motion.button>
+  </div>
+
+  {/* Right Section */}
+  <div className="md:w-1/2 relative mt-10 md:mt-0 flex justify-center">
+    <div className="relative w-full max-w-[650px] h-[350px] md:h-[600px] rounded-lg overflow-hidden shadow-xl">
+      <img
+        src={Images}
+        alt="People Enjoying Hangout"
+        className="rounded-lg w-full h-full object-cover"
+      />
+    </div>
+  </div>
+</section>
+
 
 
       {/* Categories Section */}

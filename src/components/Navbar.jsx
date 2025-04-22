@@ -3,52 +3,49 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/hangout.png";
-import Avatar from "../assets/images (7).png"; 
+import Avatar from "../assets/images (7).png";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const { i18n, t } = useTranslation();
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  
-  
-
 
   useEffect(() => {
-    // Check if to
     const token = localStorage.getItem("auth_token");
-    console.log('token')
-    console.log(token)
-    setIsLoggedIn(!!token); // Convert token existence to boolean
+    setIsLoggedIn(!!token);
   }, []);
 
   const handleSignin = () => navigate("/Signin");
+
   const handleSignout = () => {
-    localStorage.removeItem("token"); // Remove token on logout
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
     navigate("/");
   };
 
-  const dashboard =()=> navigate("/Userdasboard");
-
+  const dashboard = () => navigate("/Userdasboard");
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Hangout Places", path: "/HangoutPlaces" },
-    { name: "Lovers Place", path: "/loversPlaces" },
-    { name: "Live Events", path: "/Live" },
-    { name: "Showcase", path: "/HangoutShowcase" },
-    { name: "Go-Live", path: "/Golive" },
-    { name: "About", path: "/AboutUs" },
-    { name: "For Business", path: "/PostEvent" },
+    { key: "nav.home", path: "/" },
+    { key: "nav.hangout", path: "/HangoutPlaces" },
+    { key: "nav.lovers", path: "/loversPlaces" },
+    { key: "nav.live", path: "/Live" },
+    { key: "nav.showcase", path: "/HangoutShowcase" },
+    { key: "nav.golive", path: "/Golive" },
+    { key: "nav.business", path: "/PostEvent" },
   ];
 
+  const handleLanguageChange = (e) => {
+    const selectedLanguage = e.target.value;
+    i18n.changeLanguage(selectedLanguage);
+  };
+
   return (
-    <nav className="bg-yellow-500">
+    <nav className="bg-yellow-500 relative z-50">
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
         <div onClick={() => navigate("/")} className="cursor-pointer">
@@ -64,81 +61,110 @@ const Navbar = () => {
                 className="text-red-600 font-bold hover:text-gray-700 transition duration-300"
                 style={{ fontSize: 19 }}
               >
-                {link.name}
+                {t(link.key)}
               </a>
             </li>
           ))}
         </ul>
-      
-        <div className="hidden md:flex space-x-4">
+
+        {/* Desktop Right Side */}
+        <div className="hidden md:flex items-center space-x-2">
+          <select
+            onChange={handleLanguageChange}
+            className="bg-white text-gray-700 p-1 rounded-md"
+          >
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <option value="de">German</option>
+          </select>
+
           {isLoggedIn ? (
-              <div className="relative group cursor-pointer x-50">
+            <div className="relative group cursor-pointer">
               <img
-              onClick={dashboard}
-                src={Avatar} 
+                onClick={dashboard}
+                src={Avatar}
                 alt="Profile"
-                className="w-10 h-10 rounded-full border border-gray-300 transition duration-300 hover:shadow-md"
+                className="w-10 h-10 rounded-full border border-gray-300"
               />
-             
             </div>
-            
           ) : (
             <button
               onClick={handleSignin}
-              className="bg-white border border-black px-4 py-1 rounded-md transition duration-300 hover:bg-black hover:text-white"
+              className="bg-black text-white px-4 py-2 rounded"
             >
-              Login
+              {t("nav.signin")}
             </button>
           )}
         </div>
 
         {/* Mobile Menu Button */}
-        <button onClick={toggleMenu} className="md:hidden p-2">
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center">
+          <button onClick={toggleMenu}>
+            {isOpen ? <X className="text-white w-6 h-6" /> : <Menu className="text-white w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Navigation Menu */}
       <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-yellow-500 mt-2 p-4 space-y-3"
-          >
-            {navLinks.map((link, index) => (
-              <motion.a
-                key={index}
-                href={link.path}
-                className="block text-black text-lg font-medium hover:text-gray-700 transition duration-300"
-                whileTap={{ scale: 0.95 }}
-              >
-                {link.name}
-              </motion.a>
-            ))}
+      {isOpen && (
+  <motion.ul
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    className="md:hidden flex flex-col space-y-4 bg-yellow-400 rounded-b-xl shadow-lg px-6 py-6"
+  >
+    {navLinks.map((link, index) => (
+      <li key={index}>
+        <a
+          href={link.path}
+          className="block text-red-700 font-semibold text-lg hover:text-red-900 transition duration-300"
+          onClick={() => setIsOpen(false)}
+        >
+          {t(link.key)}
+        </a>
+      </li>
+    ))}
 
-            {/* Mobile Profile Avatar or Login Button */}
-            <div className="flex flex-col space-y-3 mt-4">
-              {isLoggedIn ? (
-                <button
-                  onClick={handleSignout}
-                  className="text-red-600 font-bold hover:underline"
-                >
-                  Logout
-                </button>
-              ) : (
-                <button
-                  onClick={handleSignin}
-                  className="bg-white border border-black px-4 py-2 rounded-md transition duration-300 hover:bg-black hover:text-white"
-                >
-                  Login
-                </button>
-              )}
-            </div>
-          </motion.div>
-        )}
+    <li className="pt-2">
+      <label className="text-gray-700 font-medium text-sm mb-1 block">🌐 {t("nav.language")}</label>
+      <select
+        onChange={handleLanguageChange}
+        className="w-full bg-white text-gray-700 px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+      >
+        <option value="en">English</option>
+        <option value="fr">French</option>
+        <option value="es">Spanish</option>
+        <option value="de">German</option>
+      </select>
+    </li>
+
+    <li className="pt-4">
+      {isLoggedIn ? (
+        <div
+          onClick={dashboard}
+          className="flex items-center space-x-3 cursor-pointer"
+        >
+          <img
+            src={Avatar}
+            alt="Profile"
+            className="w-10 h-10 rounded-full border border-gray-300"
+          />
+          <span className="text-gray-800 font-medium">Dashboard</span>
+        </div>
+      ) : (
+        <button
+          onClick={handleSignin}
+          className="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition"
+        >
+          {t("nav.signin")}
+        </button>
+      )}
+    </li>
+  </motion.ul>
+)}
+
       </AnimatePresence>
     </nav>
   );

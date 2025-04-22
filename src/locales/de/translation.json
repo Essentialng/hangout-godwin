@@ -1,0 +1,45 @@
+{
+  "home": {
+    "heading": "Die Welt bewegt sich",
+    "subheading": "und wir auch.",
+    "description": "Erlebe eine neue Art, Gleichgesinnte zu entdecken, dich zu vernetzen und Zeit zu verbringen. Von lebhaften sozialen Events bis hin zu exklusiven Zusammenkünften – wir bringen die Zukunft des Miteinanders direkt auf dein Smartphone. Entdecken. Verbinden. Genießen."
+  },
+  "nav": {
+    "home": "Startseite",
+    "hangout": "Treffpunkte",
+    "lovers": "Ort für Verliebte",
+    "live": "Live-Events",
+    "showcase": "Präsentation",
+    "golive": "Live gehen",
+    "about": "Über uns",
+    "business": "Für Unternehmen"
+  },
+  
+    "hero": {
+      "title": "Finde",
+      "typed": ["Wo der Spaß ist", "Spannende Events", "Tolle Treffpunkte"],
+      "description": "Finde Veranstaltungen und Orte zum Abhängen",
+      "placeholder": "Suche nach Treffpunkten nach Name oder Ort...",
+      "search": "Suchen",
+      "location": "Welt",
+      "popular":"Beliebte Suche"
+    },
+    "mostsearch": {
+      "Lounges": "Lounges",
+      "Restaurants": "Restaurants",
+      "Night Clubs": "Nachtclubs",
+      "Museums": "Museen",
+      "Beaches": "Strände",
+      "Shopping malls": "Einkaufszentren",
+      "Poolside": "Poolbereich",
+      "Bars": "Bars"
+    },
+    "partners": {
+      "title": "Vertraut von führenden Marken",
+      "description": "Wir arbeiten mit weltweit anerkannten Marken zusammen, um Ihnen die besten Erlebnisse zu bieten."
+    }
+
+
+  
+  
+}

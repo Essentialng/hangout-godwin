@@ -1,0 +1,44 @@
+{
+  "home": {
+    "heading": "The world is going",
+    "subheading": "so are we.",
+    "description": "Experience a new way to discover, connect, and hang out with like-minded people. From vibrant social events to exclusive gatherings, we're bringing the future of hangouts right to your fingertips. Explore. Connect. Enjoy."
+  },
+  "nav": {
+    "home": "Home",
+    "hangout": "Hangout Places",
+    "lovers": "Lovers Place",
+    "live": "Live Events",
+    "showcase": "Showcase",
+    "golive": "Go-Live",
+    "about": "About",
+    "business": "For Business"
+  },
+  
+    "hero": {
+      "title": "Find",
+      "typed": ["Where the Fun’s At", "Exciting Events", "Amazing Hangouts"],
+      "description": "Discover Events and Hangout Spots in Nigeria and Around the",
+      "placeholder": "Search hangout places by name or by locations...",
+      "search": "Search",
+      "popular": "Popular search",
+      "location": "World"
+    },
+    "mostsearch": {
+      "Lounges": "Lounges",
+      "Restaurants": "Restaurants",
+      "Night Clubs": "Night Clubs",
+      "Museums": "Museums",
+      "Beaches": "Beaches",
+      "Shopping malls": "Shopping Malls",
+      "Poolside": "Poolside",
+      "Bars": "Bars"
+    },
+    "partners": {
+        "title": "Trusted by Leading Brands",
+        "description":"  We collaborate with globally recognized brands to bring you the best experiences."
+    }
+
+  
+  
+}

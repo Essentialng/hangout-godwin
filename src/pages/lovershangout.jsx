@@ -100,18 +100,18 @@ export default function LoversHangout() {
       <h2 className="text-4xl capitalize mt-6 font-bold mb-7 text-gray-800">
       {slug.charAt(0).toUpperCase() + slug.slice(1)} hangout spots <span style={{fontSize:22, color:'gray'}}>({placeData.length})</span>
     </h2>
-      <div className="flex flex-row flex-wrap gap-3 cursor-pointer">
-        {places.map((data, index) => (
-            <span 
-            key={index} 
-            style={{fontSize:20 }}
-            onClick={() => navigate(`/lovershangout/${data.slug}`)} 
-            className="bg-white px-3 py-1 rounded-full font-semibold text-sm shadow-md"
-            >
-            {data.name}
-            </span>
-        ))}
-        </div>
+    <div className="flex flex-wrap justify-center gap-3 mt-4 px-4">
+  {places.slice(0, 9).map((data, index) => (
+    <span
+      key={index}
+      onClick={() => navigate(`/lovershangout/${data.slug}`)}
+      className="bg-white px-4 py-2 rounded-full font-semibold text-sm sm:text-base shadow-md cursor-pointer hover:bg-orange-100 transition duration-200"
+    >
+      {data.name}
+    </span>
+  ))}
+</div>
+
 
       {loading ? (
        <div className="fixed inset-0 flex items-center justify-center bg-black/30 backdrop-blur-md z-50">

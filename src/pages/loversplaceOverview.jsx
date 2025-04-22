@@ -83,7 +83,7 @@ export default function HangoutOverview() {
   if (!place) {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-100">
-        <p className="text-lg font-semibold text-red-500">Place not found</p>
+        <p className="text-lg font-semibold text-red-500"></p>
       </div>
     );
   }
@@ -144,19 +144,13 @@ export default function HangoutOverview() {
     });
 
   return (
-    <div style={{paddingLeft:50,paddingRight:50,}} className="max-w-20xl  mx-auto mt-10 bg-white mb-20">
-      {/* Title & Location */}
-
-
-      <div className="max-w-7xl mx-auto mt-10 bg-white mb-20">
-      {/* Title & Location */}
+    <div className=" md:pl-20 md:pr-20 mx-auto mt-10 sm:pr-40 pr-5 pl-5 bg-white mb-20">
+      <div className="max-w-6xl mx-auto mt-10 bg-white mb-20">
       <h1 className="text-4xl font-bold text-gray-900 mb-2">{place.name}</h1>
       <p className="text-gray-600 mb-4 flex items-center text-lg">
         <LocationOnOutlinedIcon className="mr-2 text-red-500" /> {place.location}
       </p>
       
-
-      {/* Image Gallery */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
         {images.length > 0 && (
           <img
@@ -190,11 +184,7 @@ export default function HangoutOverview() {
     </div>
     {/* Rating & Views */}
     <div className="flex items-center space-x-4 mb-4">
-        {/* <div className="flex text-yellow-500">
-          {[...Array(5)].map((_, index) => (
-            <StarIcon key={index} className={index < place.rating ? "text-yellow-500" : "text-gray-300"} />
-          ))}
-        </div> */}
+       
         <p className="text-gray-700"><VisibilityIcon className="text-gray-400"/> {views} views</p>
         <button
           onClick={handleShare}
@@ -325,7 +315,7 @@ export default function HangoutOverview() {
       </div>
       
       {/* Review Submission Form ************************************************/}
-      <div className="max-w-lg mt-8 p-8 bg-white rounded-2xl shadow-xl border border-gray-300">
+      <div className="max-w-lg bg-gray-100 mt-8 p-8 rounded-2xl shadow-xl border border-gray-300">
         {/* Title */}
         <h2 className="text-2xl font-bold mb-4 text-gray-900 flex items-center">
           <span className="text-orange-500 text-3xl mr-2">★</span> Rate & Review <span className="ml-1 text-orange-600">{name}</span>
@@ -338,7 +328,7 @@ export default function HangoutOverview() {
           form={form} 
           layout="vertical" 
           onFinish={handleFinish} 
-          className="bg-gray-100 p-6 rounded-xl shadow-md"
+          className=" p-6 rounded-xl "
         >
           {/* Rating Input */}
           <Form.Item

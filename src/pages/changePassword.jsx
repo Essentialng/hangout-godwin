@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_ROUTE } from "../ApisConf/api_config";
 
 export default function ChangePassword() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export default function ChangePassword() {
 
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8000/change-password/${uid}/${token}/`, 
+        `${API_ROUTE}change-password/${uid}/${token}/`, 
         formData, 
         { headers: { "Content-Type": "application/json" } }
       );

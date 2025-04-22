@@ -37,16 +37,36 @@ import CreateLiveEvent from './pages/createLiveEvent';
 import Live from "./pages/live_event";
 import TermsOfService from "./pages/termsOfService";
 import HappeningNow from './pages/happening_now_events';
-
+import Ads from './pages/adsEvent';
+import AdsSub from './pages/ads_scription';
+import Evenue from './components/evenue';
+import Efood from './components/efood';
+import EventPostSelection from './pages/eventPostSelection';
+import CreateOrganizerEvent from './pages/createOrganizerEvent';
+import EDrinkPage from './components/edrinks';
+import './i18n'; // <- important!
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './pages/languageSwitch';
 
 function App() {
+
+  
   return (
-    <Router>
+  
+<Router>
       <ConditionalHeader />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/EDrinkPage" element={<EDrinkPage />} />
+        <Route path="/AdsSub" element={<AdsSub />} />
+        <Route path="/Efood" element={<Efood />} />
+        <Route path="/LanguageSwitcher" element={<LanguageSwitcher />} />
+        <Route path="/CreateOrganizerEvent" element={<CreateOrganizerEvent />} />
+        <Route path="/EventPostSelection" element={<EventPostSelection />} />
+        <Route path="/Evenue" element={<Evenue />} />
         <Route path="/live" element={<Live />} />
+        <Route path="/Ads" element={<Ads />} />
         <Route path="/CreateLiveEvent" element={<CreateLiveEvent />} />
         <Route path="/HappeningNow" element={<HappeningNow />} />
         <Route path="/TermsOfService" element={<TermsOfService />} />
@@ -84,6 +104,9 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+
+
+    
   );
 }
 

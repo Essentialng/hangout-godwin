@@ -108,9 +108,20 @@ const scrollVariants = {
         <motion.button
          onClick={toggleModal}
           whileHover={{ scale: 1.05 }}
-          className="bg-red-600 cursor-pointer text-white px-8 py-4 rounded-lg font-bold shadow-lg hover:bg-red-700 transition"
+          className="bg-orange-600 cursor-pointer text-white px-8 py-4 rounded-lg font-bold shadow-lg hover:bg-orange-700 transition"
         >
-         Get Started <ArrowForwardIosIcon/>
+         Get Started for Free<ArrowForwardIosIcon/>
+        </motion.button>
+
+        <motion.button
+         onClick={()=>{
+          navigate('/AdsSub');
+          window.scrollTo({top:0,behavior:'smooth'});
+         }}
+          whileHover={{ scale: 1.05 }}
+          className="border border-orange-600 text-orange-600 cursor-pointer mt-4 ml-3  px-8 py-4 rounded-lg font-bold shadow-lg hover:bg-orange-600 hover:text-white transition"
+        >
+         Run Ads <ArrowForwardIosIcon/>
         </motion.button>
         {isModalOpen && (
           <motion.div
@@ -126,19 +137,55 @@ const scrollVariants = {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Post Your Spot</h2>
               {/* <span className="text-gray-600 mb-5">Post your spot here at Hangout and get millions of People turning up </span> */}
               <div className="flex flex-col space-y-4">
-                <button onClick={redirectToDetailsLiveEvent} className="flex items-center cursor-pointer space-x-3 bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
-                  <EventIcon className="text-blue-500 text-2xl" />
-                  <span className="text-gray-900 font-medium">Events</span>
+                {/* Events */}
+                <button onClick={()=>navigate('/EventPostSelection')} className="flex flex-col items-start cursor-pointer bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
+                  <div className="flex items-center space-x-3">
+                    <EventIcon className="text-blue-500 text-2xl" />
+                    <span className="text-gray-900 font-medium text-lg">Events</span>
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">Sport</span>
+                    <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">Concert</span>
+                    <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">Festival</span>
+                    <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">Comedy Show</span>
+                    <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">Theatre</span>
+                    <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">Exhibition</span>
+                  </div>
                 </button>
-               <button onClick={redirectToDetails2} className="flex items-center cursor-pointer space-x-3 bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
-                  <HotelIcon className="text-green-500 text-2xl" />
-                  <span className="text-gray-900 font-medium">Hotel</span>
+
+                {/* Hotels */}
+                <button onClick={redirectToDetails2} className="flex flex-col items-start cursor-pointer bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
+                  <div className="flex items-center space-x-3">
+                    <HotelIcon className="text-green-500 text-2xl" />
+                    <span className="text-gray-900 font-medium text-lg">Hotels</span>
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Short-let</span>
+                    <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Long-let</span>
+                    <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Luxury</span>
+                    <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Budget</span>
+                    <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Resort</span>
+                    <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Apartment</span>
+                  </div>
                 </button>
-               <button onClick={redirectToDetails2} className="flex items-center cursor-pointer space-x-3 bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
-                  <LocalBarIcon className="text-green-500 text-2xl" />
-                  <span className="text-gray-900 font-medium">Hangout Spot</span>
-                </button>
-              </div>
+
+                {/* Hangout Spots */}
+                <button onClick={redirectToDetails2} className="flex flex-col items-start cursor-pointer bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
+                  <div className="flex items-center space-x-3">
+                    <LocalBarIcon className="text-pink-500 text-2xl" />
+                    <span className="text-gray-900 font-medium text-lg">Hangout Spots</span>
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <span className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-full">Bars</span>
+                    <span className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-full">Lounges</span>
+      <span className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-full">Cafés</span>
+      <span className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-full">Beach</span>
+      <span className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-full">Poolside</span>
+      <span className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-full">Game Center</span>
+    </div>
+  </button>
+</div>
+
             </div>
           </motion.div>
         )}

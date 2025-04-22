@@ -69,18 +69,39 @@ const PremiumLoversPage = () => {
         }}
       >
         <div className="absolute inset-0 bg-black/0"></div>
-        <div className="flex items-center justify-center mt-10">
-          <h2 style={{fontFamily:'monospace'}} className="text-yellow-500 text-6xl font-bold bg-white">Discover</h2>
-          <h2 className="font-bold ml-4 text-6xl bg-white"> the Magic </h2>
-        </div>
-        <img src={fancyImg} alt='fancyImg' className="w-100 h-20 mx-auto"/>
+        <div className="flex flex-col items-center justify-center mt-10 px-4 text-center">
+  <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 ">
+    <h2
+      style={{ fontFamily: 'monospace' }}
+      className="text-yellow-500 text-5xl sm:text-5xl md:text-6xl font-bold bg-white"
+    >
+      Discover
+    </h2>
+    <h2 className="text-5xl sm:text-5xl md:text-6xl font-bold text-gray-900 bg-white">
+      the Magic
+    </h2>
+  </div>
+  <img
+    src={fancyImg}
+    alt="fancyImg"
+    className="w-48 sm:w-60 md:w-72 h-auto mt-6 mb-10"
+  />
+</div>
+
       </motion.div>
       
       <div style={{marginTop:-100}} className="min-h-screen bg-white p-6 flex justify-center items-center">
         <div  className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {places.map((place, index) => (
             <motion.div 
-            onClick={() => navigate(`/lovershangout/${place.slug}`)} 
+            
+            onClick={() => {
+              navigate(`/lovershangout/${place.slug}`);
+              window.scrollTo({top:0, behavior:'smooth'});
+            }}
+            
+            
+            
               key={index} 
               initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
               whileInView={{ opacity: 1, x: 0 }}

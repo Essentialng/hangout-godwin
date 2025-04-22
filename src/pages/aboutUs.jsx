@@ -10,8 +10,10 @@ import Hotel2 from "../assets/image (53).png";
 import Hotel3 from "../assets/bpd2.jpg";
 import Hotel4 from "../assets/Image (9).png";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const AboutUs = () => {
+  const { t } = useTranslation();
  const  navigate = useNavigate()
     const testimonials = [
         { id: 1, name: "John Doe", text: "This platform helped me find amazing events and meet new people!", image: Hotel },
@@ -48,6 +50,9 @@ const AboutUs = () => {
         <div className="bg-gray-100 p-8 rounded-lg shadow flex flex-col items-center text-center">
           <Work fontSize="large" className="text-orange-500 mb-4" />
           <h3 className="text-2xl font-semibold mb-4">What We Do</h3>
+          <div>
+      <h1 className="p-5">{t('home.title')}</h1>
+    </div>
           <p className="text-gray-600">
             We provide an all-in-one platform to find and attend events that match your interests. From concerts and social gatherings to corporate networking and adventure trips, we bring people together.
           </p>
@@ -82,10 +87,11 @@ const AboutUs = () => {
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           loop={true}
           spaceBetween={20}
-          slidesPerView={3}
+          slidesPerView={1}  
           pagination={{ clickable: true }}
           breakpoints={{
-            768: { slidesPerView: 2 },
+            768: { slidesPerView: 2 }, 
+            1024: { slidesPerView: 3 }, 
           }}
           className="w-full"
         >
@@ -98,6 +104,7 @@ const AboutUs = () => {
           ))}
         </Swiper>
       </section>
+
 
       {/* Call to Action */}
       <section className="px-6 md:px-20 py-16 text-center bg-gray-900 text-white">

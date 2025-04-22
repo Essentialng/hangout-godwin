@@ -17,7 +17,7 @@ const Footer = () => {
           <p className="text-sm mt-2">
           Providing an all-in-one platform to find and attend events that match your interests. From concerts and social gatherings to corporate networking and adventure trips, we bring people together.
           </p>
-          <button onClick={handleRedirect} className="bg-white cursor-pointer text-bold font-bold text-orange-800 px-4 py-2 mt-4 rounded">Learn More</button>
+          <button onClick={handleRedirect} className="bg-white cursor-pointer text-bold font-bold text-orange-800 px-4 py-2 mt-4 rounded">Learn More About Us</button>
         </div>
 
         {/* Services Section */}

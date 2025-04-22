@@ -222,54 +222,51 @@ const NewListings = () => {
       }, []);
 
   return (
-    <Box sx={{ width: "100%", mx: "auto", pl:10, pr:10 }}>
-     <div>
-     <div className="mx-auto flex flex-wrap justify-between justify-center item-center mb-5 mt-5 ">
-        <h1 style={{fontFamily:'monospace'}}className="text-5xl p-4 font-bold">Explore </h1>
-        <h1  className="text-5xl p-4 text-orange-600 ml-2 font-bold"> New Listing</h1>
-        
-            
+    <Box sx={{ width: "100%", mx: "auto"}} className="mb-10">
+     <div className="mx-auto flex flex-wrap justify-center items-center mb-5 mt-5">
+        <h1 style={{ fontFamily: 'monospace' }} className="text-4xl sm:text-5xl p-4 font-bold text-center">
+          Explore
+        </h1>
+        <h1 className="text-4xl sm:text-5xl p-4 text-orange-600 ml-2 font-bold text-center">
+          New Listing
+        </h1>
       </div>
-      <img src={fancyImg} alt='fancyImg' className="w-100 h-10 mx-auto mb-2"/>
-     </div>
+
+      <img
+        src={fancyImg}
+        alt="fancyImg"
+        className="w-70 h-auto mx-auto mb-2"
+      />
+
       {/* Search Input */}
      
       
       {/* Tabs Navigation */}
-      <div style={{ justifyContent: "space-between", display: "flex", alignItems: "center", flexWrap: "wrap", gap: "10px" }}>
-        <Tabs
-          value={selectedTab}
-          onChange={(e, newValue) => setSelectedTab(newValue)}
-          variant="scrollable"
-          scrollButtons="auto"
-          sx={{ borderBottom: 1, borderColor: "divider", "& .MuiTab-root": { mx: 1 } }}
-        >
-          {categories.map((category, index) => (
-            <Tab key={index} label={category.label} icon={category.icon} sx={{ px: 3 }} />
-          ))}
-        </Tabs>
-  
-        {/* <TextField
-        variant="outlined"
-        placeholder="Search listings..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        sx={{ width: "200px" }} 
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon color="action" />
-            </InputAdornment>
-          ),
-        }}
-      /> */}
+      <div className="flex flex-wrap justify-between items-center gap-2">
+  <Tabs
+    value={selectedTab}
+    onChange={(e, newValue) => setSelectedTab(newValue)}
+    variant="scrollable"
+    scrollButtons="auto"
+    sx={{
+      borderBottom: 1,
+      borderColor: "divider",
+      "& .MuiTab-root": { mx: 1 }
+    }}
+    className="w-full sm:w-auto"
+  >
+    {categories.map((category, index) => (
+      <Tab key={index} label={category.label} icon={category.icon} sx={{ px: 3 }} />
+    ))}
+  </Tabs>
 </div>
+
 <div className="mt-5"></div>
 
-      {/* Beach Description */}
+     
      {/* Beach Listings */}
      {selectedTab === 1 && beachplaceData !=null ? (
-              <div className="grid max-w-5xl mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid max-w-5xl mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-5 pr-5">
                 {beachplaceData.map((place) => (
                   <motion.div
                     key={place.id}
@@ -317,7 +314,7 @@ const NewListings = () => {
  )}
 {/* lounch */}
 {selectedTab === 2 && beachplaceData2 !=null ? (
-              <div className="grid max-w-5xl mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid max-w-5xl pl-5 pr-5 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {beachplaceData2.map((place) => (
                   <motion.div
                     key={place.id}
@@ -365,7 +362,7 @@ const NewListings = () => {
  )}
 
 {selectedTab === 3 && beachplaceData3 !=null ? (
-              <div className="grid max-w-5xl mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid pl-5 pr-5 max-w-5xl mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {beachplaceData3.map((place) => (
                   <motion.div
                     key={place.id}
@@ -412,7 +409,7 @@ const NewListings = () => {
    <Typography></Typography>
  )}
 {selectedTab === 5 && beachplaceData4 !=null ? (
-              <div className="grid max-w-5xl mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid pl-5 pr-5 max-w-5xl mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {beachplaceData4.map((place) => (
                   <motion.div
                     key={place.id}
@@ -459,7 +456,7 @@ const NewListings = () => {
    <Typography></Typography>
  )}
 {selectedTab === 6 && beachplaceData5 !=null ? (
-              <div className="grid max-w-5xl mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid max-w-5xl pl-5 pr-5 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {beachplaceData5.map((place) => (
                   <motion.div
                     key={place.id}
@@ -507,7 +504,7 @@ const NewListings = () => {
  )}
 
 {selectedTab === 4 && beachplaceData !=null ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
+              <div className="grid grid-cols-1 pl-5 pr-5 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
               {events.map(event => (
                   <div key={event.id} className="border border-gray-300 rounded-lg overflow-hidden shadow-lg  ">
                       <img src={event.image} alt={event.event_title} className="w-full h-48 object-cover" />
@@ -534,7 +531,12 @@ const NewListings = () => {
 
       {/* Listings */}
       {selectedTab === 0 && (
-        <Box onClick={() => navigate(`/hotelnewlist/${hotel.slug}`)} sx={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 3 }}>
+        <Box 
+        onClick={()=>{
+          navigate(`/hotelnewlist/${hotel.slug}`)
+          window.scrollTo({top:0, behavior:'smooth'})
+        }}
+         sx={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 3 }} className="pl-5 pr-5">
           {loading ? (
             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "200px" }}>
               <CircularProgress />

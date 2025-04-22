@@ -32,7 +32,7 @@ const AboutUs = () => {
       >
         
         <div className="relative z-10 text-center">
-          <h1 className="text-black text-6xl font-extrabold">Privacy policy</h1>
+          <h1 className="text-black text-5xl md:text-5xl font-extrabold">Privacy policy</h1>
           <p className="text-lg text-gray-500 md:text-xl mt-4 max-w-2xl mx-auto">
             Find amazing events, connect with like-minded people, and create memories with family and friends.
           </p>

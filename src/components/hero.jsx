@@ -4,6 +4,7 @@ import homeHero from "../assets/home_herro.png";
 import { Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { API_ROUTE } from "../ApisConf/api_config";
+import { useTranslation } from "react-i18next";
 
 
 const HeroSection = () => {
@@ -12,6 +13,7 @@ const HeroSection = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchResult, setSearchResultdata] = useState("");
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -74,33 +76,33 @@ const handleSelection = (selectedSlug) => {
 
   const popularsearches = [
     {
-      name: 'Launches', slug: 'launches',
+      key: 'mostsearch.Lounges', slug: 'launches',
     },
     {
-      name: 'Restaurants', slug: 'restaurants',
+      key: 'mostsearch.Restaurants', slug: 'restaurants',
     },
     {
-      name: 'Night Clubs', slug: 'night-clubs',
+      key: 'mostsearch.Night Clubs', slug: 'night-clubs',
     },
     {
-      name: 'Museums', slug: 'museums',
+      key: 'mostsearch.Museums', slug: 'museums',
     },
     {
-      name: 'Beaches', slug: 'beaches',
+      key: 'mostsearch.Beaches', slug: 'beaches',
     },
     {
-      name: 'Shopping malls', slug: 'shopping-malls',
+      key: 'mostsearch.Shopping malls', slug: 'shopping-malls',
     },
     {
-      name: 'Comedy', slug: 'comedey-shows',
+      key: 'mostsearch.Poolside', slug: 'comedey-shows',
     },
     {
-      name: 'Bars', slug: 'bars',
+      key: 'mostsearch.Bars', slug: 'bars',
     },
 ]
   return (
     <div
-      className="relative w-full h-screen bg-cover bg-center flex flex-col items-center justify-center text-white px-4"
+      className="relative w-full p-15 bg-cover bg-center flex flex-col items-center justify-center text-white px-4"
       style={{ backgroundImage: `url(${homeHero})` }}
     >
       {/* Overlay */}
@@ -109,10 +111,10 @@ const handleSelection = (selectedSlug) => {
       {/* Content */}
       <div className="relative z-10 text-center w-full px-4 sm:px-8 lg:px-12">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold max-w-4xl mx-auto leading-tight">
-          Find{" "}
+        {t("hero.title")}{" "}
           <span className="text-yellow-400">
             <Typewriter
-              words={["Where the Fun’s At", "Exciting Events", "Amazing Hangouts"]}
+              words={t("hero.typed", { returnObjects: true })}
               loop={true}
               cursor
               cursorStyle="|"
@@ -122,21 +124,25 @@ const handleSelection = (selectedSlug) => {
             />
           </span>
         </h1>
-        <p className="text-base sm:text-lg md:text-xl mt-2">
-          Find Events and Places to Hangout in
+       <div>
+           <p className="text-base sm:text-lg md:text-xl mt-2">
+           {t("hero.description")}
         </p>
 
         {/* Location Dropdown */}
         <div className="mt-4 inline-block">
           <button className="bg-yellow-400 text-black px-5 py-3 rounded-md shadow-md font-medium text-sm sm:text-base">
-            {location} ▼
+            {t("hero.location")} ▼
           </button>
         </div>
+       </div>
         {/* Search Bar with Dropdown Suggestions */}
         <div className="relative mt-6 bg-white rounded-full flex items-center w-full max-w-4xl mx-auto shadow-lg p-1">
           <input
+          
             type="text"
-            placeholder="Seach hangout places by name or by locations... "
+             placeholder={t("hero.placeholder")}
+            //placeholder="Seach hangout places by name or by locations... "
             className="w-full p-4 pl-6 pr-20 rounded-full outline-none text-gray-700 placeholder-gray-400 text-base sm:text-lg"
             value={query}
             onChange={handleInputChange}
@@ -148,7 +154,7 @@ const handleSelection = (selectedSlug) => {
             className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 bg-orange-500 hover:bg-orange-400 cursor-pointer transition-all duration-300 px-4 sm:px-6 py-3 text-white rounded-full flex items-center gap-2 shadow-md text-sm sm:text-lg"
           >
             <Search size={20} className="text-white" />
-            <span className="hidden sm:inline font-medium">Search</span>
+            <span className="hidden sm:inline font-medium"> {t("hero.search")}</span>
           </button>
 
           {/* Search Suggestions Dropdown */}
@@ -179,27 +185,19 @@ const handleSelection = (selectedSlug) => {
           )}
 
         </div>
-
+       
         {/* Popular Searches */}
         <div className="mt-6 text-white text-left w-full max-w-4xl mx-auto">
-          <p className="text-sm sm:text-base font-medium mb-2">Popular searches</p>
+          <p className="text-sm sm:text-base font-medium mb-2"> {t('hero.popular')}</p>
           <div className="flex gap-3 overflow-x-auto whitespace-nowrap">
-            {/* {["Launchs","Night Clubs", "Beaches", "Museums", "Restaurants", "Shopping malls"].map((item, index) => (
-              <button
-                key={index}
-                className="bg-white/20 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-white/30 transition-all"
-              >
-                <Search size={16} />
-                {item}
-              </button>
-            ))} */}
 
             {popularsearches.map((datalist, index) =>(
               <div key={index}>
                   
                   <h3 
                   onClick={() =>navigate(`/hangout/${datalist.slug}`)}
-                   className="bg-white/20 cursor-pointer text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-white/30 transition-all">{datalist.name}</h3>
+                   className="bg-white/20 cursor-pointer text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-white/30 transition-all">
+                    {t(datalist.key)}</h3>
               </div>
             ))}
           </div>

@@ -26,8 +26,9 @@ const categories = [
   { label: "Tomorrow", icon: <BeachAccessIcon /> },
   { label: "This Week", icon: <CabinIcon /> },
   { label: "Next Week", icon: <BeachAccessIcon /> },
+  { label: "This Month", icon: <BeachAccessIcon /> },
   { label: "Next Month", icon: <BeachAccessIcon /> },
-  { label: "Next Year", icon: <BeachAccessIcon /> },
+  { label: "See All", icon: <BeachAccessIcon /> },
 ];
 
 
@@ -156,6 +157,11 @@ const HappeningNow = () => {
   const toggleFavorite = (index) => {
     setFavorites(prev => ({ ...prev, [index]: !prev[index] }));
   };
+
+  if (selectedTab === 6) {
+    // Redirect to the desired page (e.g., "/anotherPage")
+    navigate('/Live');
+  }
 
   useEffect(() => {
     
@@ -298,14 +304,21 @@ const HappeningNow = () => {
       }, []);
 
   return (
-    <Box sx={{ width: "100%", mx: "auto", pl:10, pr:10 }}>
+    <Box sx={{ width: "100%", mx: "auto", }}>
      <div>
-     <div className="mx-auto flex flex-wrap justify-between justify-center item-center mb-5 mt-5 ">
-        <h1 style={{fontFamily:'monospace'}}className="text-5xl p-4 font-bold">Happening </h1>
-        <h1  className="text-5xl p-4 text-orange-600 ml-2 font-bold"> Now  <SensorsIcon style={{ fontSize: 40 }} className="mr-3" /> </h1>
-        
-            
-      </div>
+     <div className="mx-auto flex flex-wrap justify-center items-center text-center mb-5 mt-5">
+  <h1
+    style={{ fontFamily: 'monospace' }}
+    className="text-3xl sm:text-5xl p-2 sm:p-4 font-bold"
+  >
+    Happening
+  </h1>
+  <h1 className="text-3xl sm:text-5xl p-2 sm:p-4 text-orange-600 font-bold flex items-center">
+    Now
+    <SensorsIcon style={{ fontSize: 30 }} className="ml-2 sm:ml-3" />
+  </h1>
+</div>
+
    
       {/* <img src={fancyImg} alt='fancyImg' className="w-100 h-10 mx-auto mb-2"/> */}
      </div>
@@ -313,20 +326,31 @@ const HappeningNow = () => {
      
       
       {/* Tabs Navigation */}
-      <div style={{ justifyContent: "center", display: "flex", alignItems: "center", flexWrap: "wrap", gap: "10px",marginBottom:20 }}>
+      <div className="flex flex-wrap justify-center items-center gap-2 mb-5 px-2 sm:px-0">
         <Tabs
           value={selectedTab}
           onChange={(e, newValue) => setSelectedTab(newValue)}
           variant="scrollable"
           scrollButtons="auto"
-          sx={{ borderBottom: 0, borderColor: "divider", "& .MuiTab-root": { mx: 1 } }}
+          sx={{
+            borderBottom: 0,
+            borderColor: 'divider',
+            '& .MuiTab-root': {
+              mx: { xs: 0.5, sm: 1 },
+              backgroundColor: '#dddd',
+              color: '#000',
+              borderRadius: 2,
+              fontWeight: 500,
+              minHeight: 'auto',
+            },
+          }}
         >
           {categories.map((category, index) => (
-            <Tab style={{backgroundColor:'#dddd', color:'#000', borderRadius:10, fontWeight:500}} key={index} label={category.label} sx={{ px: 3 }} />
+            <Tab key={index} label={category.label} sx={{ px: { xs: 1, sm: 3 }, fontSize: { xs: 12, sm: 16 } }} />
           ))}
         </Tabs>
-          
-</div>
+      </div>
+
 <div className="mt-5"></div>
 
      {/* Beach Listings */}
@@ -627,6 +651,90 @@ const HappeningNow = () => {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
+      // First day of the current month
+      const currentMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+
+      // Last day of the current month
+      const currentMonthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+      // Filter events happening this month
+      const currentMonthEvents = events.filter((event) => {
+        const eventDate = new Date(event.event_date_time);
+        eventDate.setHours(0, 0, 0, 0);
+        return eventDate >= currentMonthStart && eventDate <= currentMonthEnd;
+      });
+
+      return currentMonthEvents.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {currentMonthEvents.map((event) => (
+            <div
+              key={event.id}
+              className="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-2xl transition-all"
+            >
+              {/* Event Image */}
+              <div className="relative">
+                <img
+                  src={event.image}
+                  alt={event.event_title}
+                  className="w-full h-60 object-cover rounded-t-xl"
+                />
+                <span className="absolute top-3 right-3 bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow-md">
+                  This Month
+                </span>
+              </div>
+
+              {/* Event Details */}
+              <div className="p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-2">
+                  {event.event_title}
+                </h2>
+                <p className="text-sm text-gray-500 flex items-center mb-1">
+                  📍 <span className="ml-1">{event.location}</span>
+                </p>
+                <div className="flex flex-wrap justify-between mt-1">
+                  <p className="text-sm text-gray-500 flex items-center">
+                    📅 {new Date(event.event_date_time).toLocaleDateString()}
+                  </p>
+                  <p className="text-sm text-gray-500 flex items-center">
+                    ⏰ {new Date(event.event_date_time).toLocaleTimeString()}
+                  </p>
+                </div>
+
+                <p className="text-gray-700 mt-4 text-sm leading-relaxed">
+                  {event.about.length > 120
+                    ? event.about.slice(0, 120) + "..."
+                    : event.about}
+                </p>
+
+                {/* View Event Button */}
+                <button
+                  className="mt-6 w-full bg-blue-600 text-white font-semibold rounded-lg py-3 flex items-center justify-center shadow-md transition-transform hover:scale-105 hover:bg-blue-700"
+                  onClick={() => navigate(`/LiveEventDetails/${event.slug}`)}
+                >
+                  View Event
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center text-gray-500 text-lg font-medium mt-10">
+          No events this month
+        </div>
+      );
+    })()}
+  </div>
+) : (
+  <Typography></Typography>
+)}
+
+
+{selectedTab === 5 && beachplaceData5 != null ? (
+  <div className="max-w-6xl mx-auto px-6">
+    {(() => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
       // First day of next month
       const nextMonthStart = new Date(today.getFullYear(), today.getMonth() + 1, 1);
 
@@ -691,6 +799,7 @@ const HappeningNow = () => {
                   View Event
                 </button>
               </div>
+              
             </div>
           ))}
         </div>
@@ -704,94 +813,9 @@ const HappeningNow = () => {
 ) : (
   <Typography></Typography>
 )}
+{selectedTab === 6 ? (<div>Redirecting...</div> ) : (<Typography></Typography>)}
 
-{selectedTab === 5 && beachplaceData5 != null ? (
-  <div className="max-w-6xl mx-auto px-6">
-    {(() => {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
 
-      // First day of next year
-      const nextYearStart = new Date(today.getFullYear() + 1, 0, 1);
-
-      // Last day of next year
-      const nextYearEnd = new Date(today.getFullYear() + 1, 11, 31);
-
-      // Filter events happening next year
-      const nextYearEvents = events.filter((event) => {
-        const eventDate = new Date(event.event_date_time);
-        eventDate.setHours(0, 0, 0, 0);
-        return eventDate >= nextYearStart && eventDate <= nextYearEnd;
-      });
-
-      return nextYearEvents.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {nextYearEvents.map((event) => (
-            <div
-              key={event.id}
-              className="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-2xl transition-all"
-            >
-              {/* Event Image */}
-              <div className="relative">
-                <img
-                  src={event.image}
-                  alt={event.event_title}
-                  className="w-full h-60 object-cover rounded-t-xl"
-                />
-                <span className="absolute top-3 right-3 bg-green-600 text-white text-xs px-3 py-1 rounded-full shadow-md">
-                  Next Year
-                </span>
-              </div>
-
-              {/* Event Details */}
-              <div className="p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-2">
-                  {event.event_title}
-                </h2>
-                <p className="text-sm text-gray-500 flex items-center mb-1">
-                  📍 <span className="ml-1">{event.location}</span>
-                </p>
-                <div>
-
-                <div className="flex flex-wrap justify-between mt-1">
-                  <p className="text-sm text-gray-500 flex items-center">
-                  📅 {new Date(event.event_date_time).toLocaleDateString()}
-                  </p>
-                  <p className="text-sm text-gray-500 flex items-center">
-                    ⏰ {new Date(event.event_date_time).toLocaleTimeString()}
-                    
-                  </p>
-                </div>
-                
-                </div>
-
-                <p className="text-gray-700 mt-4 text-sm leading-relaxed">
-                  {event.about.length > 120
-                    ? event.about.slice(0, 120) + "..."
-                    : event.about}
-                </p>
-
-                {/* View Event Button */}
-                <button
-                  className="mt-6 w-full bg-green-600 text-white font-semibold rounded-lg py-3 flex items-center justify-center shadow-md transition-transform hover:scale-105 hover:bg-green-700"
-                  onClick={() => navigate(`/LiveEventDetails/${event.slug}`)}
-                >
-                  View Event
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="text-center text-gray-500 text-lg font-medium mt-10">
-          No events next year
-        </div>
-      );
-    })()}
-  </div>
-) : (
-  <Typography></Typography>
-)}
 
 
 
@@ -800,7 +824,7 @@ const HappeningNow = () => {
 
       {/* Listings */}
       {selectedTab === 0 && (
-        <Box onClick={() => navigate(`/hotelnewlist/${hotel.slug}`)} sx={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 3 }}>
+        <Box onClick={() => navigate(`/hotelnewlist/${hotel.slug}`)} sx={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 3 }} className="p-6">
           {videos.length > 0 ? (
                       videos.map((video) => (
                         <div key={video.id.videoId} className="relative bg-white shadow-lg rounded-lg overflow-hidden">
@@ -814,7 +838,7 @@ const HappeningNow = () => {
                             allowFullScreen
                           ></iframe>
           
-          
+        
                           <div className="p-4">
                             <p className="text-sm font-semibold text-gray-700 truncate">
                               {video.snippet.title}
@@ -823,14 +847,96 @@ const HappeningNow = () => {
                               {video.snippet.channelTitle}
                             </p>
                           </div>
+                         
                         </div>
                       ))
                     ) : (
                       <p className="text-center text-gray-500">No live streams available.</p>
                     )}
+                    
+                   
         </Box>
+        
       )}
-      
+      {selectedTab === 0 && beachplaceData != null ? (
+  <div className="max-w-6xl mx-auto m-4">
+  {(() => {
+    // Get today's date at midnight
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Filter events happening today
+    const todayEvents = events.filter((event) => {
+      const eventDate = new Date(event.event_date_time);
+      eventDate.setHours(0, 0, 0, 0);
+      return eventDate.getTime() === today.getTime();
+    });
+
+    return todayEvents.length > 0 ? (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        {todayEvents.map((event) => (
+          <div
+            key={event.id}
+            className="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-2xl transition-all"
+          >
+            {/* Event Image */}
+            <div className="relative">
+              <img
+                src={event.image}
+                alt={event.event_title}
+                className="w-full h-60 object-cover rounded-t-xl"
+              />
+              <span className="absolute top-3 right-3 bg-red-600 text-white text-xs px-3 py-1 rounded-full shadow-md">
+                Today
+              </span>
+            </div>
+
+            {/* Event Details */}
+            <div className="p-6">
+              <h2 className="text-xl font-bold text-gray-900 mb-2">
+                {event.event_title}
+              </h2>
+              <p className="text-sm text-gray-500 flex items-center mb-1">
+                📍 <span className="ml-1">{event.location}</span>
+              </p>
+
+              <div className="flex flex-wrap justify-between mt-1">
+                <p className="text-sm text-gray-500 flex items-center">
+                  📅 {new Date(event.event_date_time).toLocaleDateString()}
+                </p>
+                <p className="text-sm text-gray-500 flex items-center">
+                  ⏰ {new Date(event.event_date_time).toLocaleTimeString()}
+                </p>
+              </div>
+
+              <p className="text-gray-700 mt-4 text-sm leading-relaxed">
+                {event.about.length > 120
+                  ? event.about.slice(0, 120) + "..."
+                  : event.about}
+              </p>
+
+              {/* View Event Button */}
+              <button
+                className="mt-6 w-full bg-orange-600 text-white font-semibold rounded-lg py-3 flex items-center justify-center shadow-md transition-transform cursor-pointer hover:scale-105 hover:bg-orange-700"
+                onClick={() => navigate(`/LiveEventDetails/${event.slug}`)}
+              >
+                View Event
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div className="text-center text-gray-500 text-lg font-medium mt-10">
+        No events today
+      </div>
+    );
+  })()}
+</div>
+
+) : (
+  <Typography></Typography>
+)}
     </Box>
   );
 };

@@ -35,6 +35,9 @@ export default function EventDetails() {
   const [liveEvents, setliveEventData] = useState([]);
   const [views, setliveView] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [earlyBirdPrice, setEarlyBirdPrice] = useState([]);
+  const [normalPrice, setPrice] = useState([]);
+  const [vipPrice, setVIPPrice] = useState([]);
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(true);
 
@@ -61,6 +64,10 @@ export default function EventDetails() {
           setImages(res.data.image);
           setVideo(res.data.video);
           setliveView(res.data.view_count);
+
+          setPrice(res.data.price);
+          setVIPPrice(res.data.vip_price);
+          setEarlyBirdPrice(res.data.early_bird_price);
           
           console.log('imga data', res.data.image)
         }
@@ -113,7 +120,32 @@ export default function EventDetails() {
       hour12: true, // AM/PM format
     });
   }, [date]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const eventsPerPage = 4;
+  const totalEvents = liveEvents.length;
 
+  
+
+  // Function to move to the next set of events
+  const handleNext = () => {
+    if (currentIndex + eventsPerPage >= totalEvents) {
+      setCurrentIndex(0); // Loop back to the first set of events
+    } else {
+      setCurrentIndex(currentIndex + eventsPerPage);
+    }
+  };
+
+  // Function to move to the previous set of events
+  const handlePrev = () => {
+    if (currentIndex === 0) {
+      setCurrentIndex(totalEvents - eventsPerPage); // Loop back to the last set
+    } else {
+      setCurrentIndex(currentIndex - eventsPerPage);
+    }
+  };
+
+  // Get the current set of events to display
+  const currentEvents = liveEvents.slice(currentIndex, currentIndex + eventsPerPage);
 
   useEffect(()=>{
       const retrieveLiveEvent2=async()=>{
@@ -285,11 +317,35 @@ export default function EventDetails() {
                 <span className="ml-2 text-lg font-semibold text-gray-800">{rating}/5</span>
               </div>
             </div>
+            <div className="space-y-6 mt-8">
+              {normalPrice && (
+                <div className="flex items-center justify-between bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition duration-200">
+                  <span className="text-xl font-semibold text-gray-700">Standard Price</span>
+                  <span className="text-lg font-bold text-gray-900">₦{normalPrice.toLocaleString('en-US')}</span>
+                </div>
+              )}
+
+              {vipPrice && (
+                <div className="flex items-center justify-between bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition duration-200">
+                  <span className="text-xl font-semibold text-gray-700">V.I.P Price</span>
+                  <span className="text-lg font-bold text-gray-900">₦{vipPrice.toLocaleString('en-US')}</span>
+                </div>
+              )}
+
+              {earlyBirdPrice && (
+                <div className="flex items-center justify-between bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition duration-200">
+                  <span className="text-xl font-semibold text-gray-700">Early Bird Price</span>
+                  <span className="text-lg font-bold text-gray-900">₦{earlyBirdPrice.toLocaleString('en-US')}</span>
+                </div>
+              )}
+            </div>
+
 
             {/* Time Left */}
             <p className="flex items-center bg-black text-white text-lg font-bold py-2 px-4 rounded-xl mt-6 w-fit">
               <AccessTimeFilledIcon style={{ color: "red" }} className="mr-2" /> {formattedDate} Left
             </p>
+            
 
             {/* CTA Button */}
             <button className="mt-6 bg-orange-500 text-white px-6 py-3 rounded-xl font-semibold text-lg hover:bg-orange-600 transition duration-300">
@@ -529,61 +585,82 @@ export default function EventDetails() {
   </Form>
 </div>
 
-{/* other events *********************/}
 <div className="mt-20 w-full px-6">
   {/* Section Title */}
-  <h1 className="text-4xl font-bold text-gray-900 text-center mb-8">
+  <h1 className="text-4xl font-extrabold text-gray-900 text-center mb-8">
     Other Events You May Like
   </h1>
 
   {/* Event Cards Wrapper */}
-  <div className="flex gap-6 overflow-x-auto whitespace-nowrap px-4 mx-auto justify-center items-center mb-20">
-    {liveEvents.map((event, index) => (
-      <motion.div
-        key={index}
-        whileHover={{ scale: 1.03 }}
-        className="w-80 bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl"
+  <div className="relative">
+    <div className="flex gap-6 justify-center items-center mb-20">
+      {currentEvents.map((event, index) => (
+        <motion.div
+          key={index}
+          whileHover={{ scale: 1.05 }}
+          className="w-full sm:w-80 md:w-1/2 lg:w-1/4 xl:w-1/5 bg-white rounded-xl shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-2xl"
+        >
+          {/* Event Image or Video */}
+          <div className="relative w-full h-56 rounded-t-xl overflow-hidden">
+            {event.image?.length > 0 ? (
+              <img
+                src={event.image}
+                alt={event.event_title}
+                className="w-full h-full object-cover"
+              />
+            ) : event.video ? (
+              <video
+                src={event.video}
+                className="w-full h-full object-cover"
+                controls
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-gray-300">
+                <p className="text-gray-500 text-sm">No Media Available</p>
+              </div>
+            )}
+          </div>
+
+          {/* Event Details */}
+          <div className="p-6">
+            <h3 className="text-xl font-semibold text-gray-800">{event.event_title}</h3>
+            <p className="text-gray-600 flex items-center gap-2 text-sm mt-2">
+              <FaCalendarAlt className="text-yellow-500" /> {event.event_date_time}
+            </p>
+
+            {/* Button */}
+            <button
+              onClick={() => navigate(`/LiveEventDetails2/${event.slug}`)}
+              className="mt-6 w-full border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white px-6 py-3 rounded-md font-semibold transition-all hover:opacity-90"
+            >
+              Check Out Event
+            </button>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* Navigation Buttons */}
+    <div className="absolute top-1/2 left-0 transform -translate-y-1/2 pl-4">
+      <button
+        onClick={handlePrev}
+        className="bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-600 transition-all"
       >
-        {/* Event Image or Video */}
-        <div className="relative w-full h-52 rounded-t-lg overflow-hidden">
-          {event.image?.length > 0 ? (
-            <img
-              src={event.image}
-              alt={event.event_title}
-              className="w-full h-full object-cover"
-            />
-          ) : event.video ? (
-            <video
-              src={event.video}
-              className="w-full h-full object-cover"
-              controls
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gray-200">
-              <p className="text-gray-500">No Media Available</p>
-            </div>
-          )}
-        </div>
+        &#8592; Prev
+      </button>
+    </div>
 
-        {/* Event Details */}
-        <div className="p-5">
-          <h3 className="text-lg font-semibold text-gray-800">{event.event_title}</h3>
-          <p className="text-gray-600 flex items-center gap-2 text-sm mt-2">
-            <FaCalendarAlt className="text-yellow-500" /> {event.event_date_time}
-          </p>
-
-          {/* Button */}
-          <button
-            onClick={() => navigate(`/LiveEventDetails2/${event.slug}`)}
-            className="mt-5 w-full border border-orange-700 cursor-pointer  text-orange-700 hover:bg-orange-600 hover:text-white px-6 py-2 rounded-md font-semibold transition-all hover:opacity-90"
-          >
-            View Event
-          </button>
-        </div>
-      </motion.div>
-    ))}
+    <div className="absolute top-1/2 right-0 transform -translate-y-1/2 pr-4">
+      <button
+        onClick={handleNext}
+        className="bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-600 transition-all"
+      >
+        Next &#8594;
+      </button>
+    </div>
   </div>
 </div>
+
 
 
     </div>

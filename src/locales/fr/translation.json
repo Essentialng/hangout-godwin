@@ -1,0 +1,46 @@
+{
+  
+  
+    "home": {
+      "heading": "Le monde avance",
+      "subheading": "et nous aussi.",
+      "description": "Découvrez une nouvelle façon de rencontrer, connecter et passer du bon temps avec des personnes partageant les mêmes intérêts. Des événements sociaux dynamiques aux rencontres exclusives, nous apportons l’avenir des hangouts au creux de votre main. Explorez. Connectez. Profitez."
+    },
+    "nav": {
+      "home": "Accueil",
+      "hangout": "Lieux de rencontre",
+      "lovers": "Endroit pour amoureux",
+      "live": "Événements en direct",
+      "showcase": "Vitrine",
+      "golive": "Passer en direct",
+      "about": "À propos",
+      "business": "Pour les entreprises"
+    },
+    "hero": {
+      "title": "Trouver",
+      "typed": ["Où est le fun", "Événements passionnants", "Endroits géniaux pour sortir"],
+      "description": "Découvrez des événements et des lieux de sortie au Nigeria et dans le monde entier",
+      "placeholder": "Recherchez des lieux de sortie par nom ou par localisation...",
+      "search": "Rechercher",
+      "popular": "Recherche populaire",
+      "location": "Monde"
+    },
+    "mostsearch": {
+      "Lounges": "Salons",
+      "Restaurants": "Restaurants",
+      "Night Clubs": "Boîtes de nuit",
+      "Museums": "Musées",
+      "Beaches": "Plages",
+      "Shopping malls": "Centres commerciaux",
+      "Poolside": "Bord de piscine",
+      "Bars": "Bars"
+    },
+    "partners": {
+      "title": "De grandes marques nous font confiance",
+      "description": "Nous collaborons avec des marques reconnues dans le monde entier pour vous offrir les meilleures expériences."
+    }
+
+
+
+  
+}

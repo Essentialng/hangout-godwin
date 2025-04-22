@@ -307,34 +307,30 @@ const HeroSection = () => {
 
 
   return (
-    <div className="w-full bg-white pb-12">
-      
-      {/* Top Banner */}
-      <div className="text-center py-10 mt-16 mb-12 px-6">
-        <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900 leading-snug">
-          The world is going  
-          <span className="text-orange-500 text-7xl md:text-8xl font-black italic tracking-wide">e</span>, so are we.
-        </h2>
-        <p className="mt-4 text-lg md:text-xl text-gray-500 max-w-3xl mx-auto">
-          Experience a new way to **discover, connect, and hang out** with like-minded people.  
-          From vibrant social events to exclusive gatherings, we're bringing the future of hangouts right to your fingertips.  
-           **Explore. Connect. Enjoy.**
-        </p>
-      </div>
-
-      {/* Categories with Move-in Animation */}
-      <div className="bg-[#fca674] p-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+     <div className="w-full bg-gradient-to-r from-blue-100 to-indigo-200 "> 
+    
+      <h3 className="text-center mt-10 text-3xl sm:text-4xl md:text-5xl font-bold pt-10">
+        Explore Hangout Placess
+      </h3>
+      <div className=" p-7 bg-gradient-to-r from-blue-100 to-indigo-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
 
         {/* restaurants listing +++++++++++++++++++++++++++*/}
-        
+      
         <div className="justify-center p-2">
           {/* Restaurants Listing */}
           {hotellisting.length > 0 && (
             <motion.div
               key={hotellisting[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/HotelsNewListing`)}
+              className="bg-white border shadow-lg border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+             
+
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                navigate(`/HotelsNewListing`);
+              }}
+              
+             
             >
               <img
                 src={`${hotellisting[0].images?.[0]?.image}`}
@@ -361,8 +357,21 @@ const HeroSection = () => {
             <motion.div
               key={placeData2[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/hangout/${placeData2[0].slug}`)}
+              className="bg-white shadow-lg border border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+              // onClick={() => {
+              //   navigate(`/hangout/${placeData2[0].slug}`)},
+              //   window.scrollTo(0,0),
+              // }}
+
+              onClick={() => {
+                navigate(`/hangout/${placeData2[0].slug}`);
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              }}
+
+              
+              
             >
               <img
                 src={`${API_ROUTE}${placeData2[0].images?.[0]?.image}`}
@@ -388,8 +397,14 @@ const HeroSection = () => {
             <motion.div
               key={placeData3[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/hangout/${placeData3[0].slug}`)}
+              className="bg-white shadow-lg border border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+              onClick={() => {
+                navigate(`/hangout/${placeData3[0].slug}`);
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              }}
+             
             >
               <img
                 src={`${API_ROUTE}${placeData3[0].images?.[0]?.image}`}
@@ -415,8 +430,13 @@ const HeroSection = () => {
             <motion.div
               key={placeData4[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/hangout/${placeData4[0].slug}`)}
+              className="bg-white border shadow-lg border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+              onClick={() => {
+                navigate(`/hangout/${placeData4[0].slug}`);
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              }}
             >
               <img
                 src={`${API_ROUTE}${placeData4[0].images?.[0]?.image}`}
@@ -442,8 +462,13 @@ const HeroSection = () => {
             <motion.div
               key={placeData5[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/hangout/${placeData5[0].slug}`)}
+              className="bg-white border shadow-lg border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+              onClick={() => {
+                navigate(`/hangout/${placeData5[0].slug}`);
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              }}
             >
               <img
                 src={`${API_ROUTE}${placeData5[0].images?.[0]?.image}`}
@@ -469,8 +494,13 @@ const HeroSection = () => {
             <motion.div
               key={placeData6[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/hangout/${placeData6[0].slug}`)}
+              className="bg-white border shadow-lg border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+              onClick={() => {
+                navigate(`/hangout/${placeData6[0].slug}`);
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              }}
             >
               <img
                 src={`${API_ROUTE}${placeData6[0].images?.[0]?.image}`}
@@ -496,8 +526,13 @@ const HeroSection = () => {
             <motion.div
               key={placeData7[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/hangout/${placeData7[0].slug}`)}
+              className="bg-white shadow-lg border border-gray-100  p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+              onClick={() => {
+                navigate(`/hangout/${placeData7[0].slug}`);
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              }}
             >
               <img
                 src={`${API_ROUTE}${placeData7[0].images?.[0]?.image}`}
@@ -523,8 +558,13 @@ const HeroSection = () => {
             <motion.div
               key={placeData8[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100 p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/hangout/${placeData8[0].slug}`)}
+              className="bg-white border shadow-lg border-gray-100 p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+              onClick={() => {
+                navigate(`/hangout/${placeData8[0].slug}`);
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              }}
             >
               <img
                 src={`${API_ROUTE}${placeData8[0].images?.[0]?.image}`}
@@ -550,8 +590,13 @@ const HeroSection = () => {
             <motion.div
               key={placeData9[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100 p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/hangout/${placeData9[0].slug}`)}
+              className="bg-white shadow-lg border border-gray-100 p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+              onClick={() => {
+                navigate(`/hangout/${placeData9[0].slug}`);
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              }}
             >
               <img
                 src={`${API_ROUTE}${placeData9[0].images?.[0]?.image}`}
@@ -577,8 +622,13 @@ const HeroSection = () => {
             <motion.div
               key={placeData10[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100 p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/hangout/${placeData10[0].slug}`)}
+              className="bg-white border shadow-lg border-gray-100 p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+              onClick={() => {
+                navigate(`/hangout/${placeData10[0].slug}`);
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              }}
             >
               <img
                 src={`${API_ROUTE}${placeData10[0].images?.[0]?.image}`}
@@ -604,8 +654,13 @@ const HeroSection = () => {
             <motion.div
               key={placeData11[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100 p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/hangout/${placeData11[0].slug}`)}
+              className="bg-white border shadow-lg border-gray-100 p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+              onClick={() => {
+                navigate(`/hangout/${placeData11[0].slug}`);
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              }}
             >
               <img
                 src={`${API_ROUTE}${placeData11[0].images?.[0]?.image}`}
@@ -631,8 +686,13 @@ const HeroSection = () => {
             <motion.div
               key={placeData12[0].id}
               whileHover={{ scale: 1.05 }}
-              className="bg-white border border-gray-100 p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
-              onClick={() => navigate(`/hangout/${placeData12[0].slug}`)}
+              className="bg-white border shadow-lg border-gray-100 p-1 overflow-hidden cursor-pointer w-full lg:w-[100%]"
+              onClick={() => {
+                navigate(`/hangout/${placeData12[0].slug}`);
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              }}
             >
               <img
                 src={`${API_ROUTE}${placeData12[0].images?.[0]?.image}`}
@@ -655,31 +715,23 @@ const HeroSection = () => {
         
           
       </div>
-      <div className="bg-[#fca674] p-3">
-      <button
-          className=" bg-white justify-center items-center mx-auto text-black cursor-pointer hover:text-orange-600 hover:bg-white px-5 md:px-8 py-3 md:py-4 text-lg md:text-xl font-semibold rounded-lg shadow-lg flex items-center transition-transform transform hover:scale-105"
-          onClick={() => navigate('/HangoutPlaces')}
-          >
-          See All <ArrowForwardIosIcon style={{ fontSize: 20, color:'black', marginLeft:10}} className="mr-3 hover:text-orange-600" /> 
-        </button>
-      </div>
+      <div className="bg-gradient-to-r from-blue-100 to-indigo-200 p-3">
       
-      {/* Event Banner */}
-      {/* <div className="relative w-full mt-30 mx-auto">
-        <img src={homeHero} alt="Event" className="w-full h-100" />
-       
-        <button className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full text-white transition">
-        
+        <button
+          className="bg-white text-black justify-center items-center mx-auto cursor-pointer hover:text-orange-600 hover:bg-white px-3 md:px-5 py-2 md:py-3 text-sm md:text-base font-semibold rounded-md shadow-md flex items-center transition-transform transform hover:scale-105"
+         
+          onClick={() => {
+            navigate(`/HangoutPlaces`);
+            setTimeout(() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 100);
+          }}
+        >
+          See All
+          <ArrowForwardIosIcon style={{ fontSize: 12, color: 'black', marginLeft: 6 }} className="hover:text-orange-600" />
         </button>
-        <button className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full text-white transition">
-          
-        </button>
-        <button 
-        onClick={() => navigate(`/hangout/bars-and-clubs`)}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 border cursor-pointer border-white text-white px-6 py-3 rounded-md font-semibold">
-          View Place
-        </button>
-      </div> */}
+
+      </div>
     </div>
   );
 };

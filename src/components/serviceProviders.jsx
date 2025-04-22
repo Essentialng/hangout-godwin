@@ -31,9 +31,9 @@ const redirect =() =>{
   
   <button 
     onClick={redirect} 
-    className="bg-orange-600 cursor-pointer text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-orange-700 transition duration-300"
+    className=" cursor-pointer text-orange-600 inline px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 hover:text-white transition duration-300"
   >
-    Explore
+    See All
   </button>
 </div>
 

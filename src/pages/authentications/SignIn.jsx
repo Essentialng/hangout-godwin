@@ -4,6 +4,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { API_ROUTE } from "../../ApisConf/api_config";
 
 export default function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
@@ -32,10 +33,10 @@ export default function AuthForm() {
     let url, payload;
 
     if (forgotPassword) {
-      url = "http://127.0.0.1:8000/forgot-password/";
+      url = `${API_ROUTE}forgot-password/`;
       payload = { email: formData.email };
     } else {
-      url = isLogin ? "http://127.0.0.1:8000/login/" : "http://127.0.0.1:8000/signup/";
+      url = isLogin ? `${API_ROUTE}login/` : `${API_ROUTE}signup/`;
       payload = isLogin
         ? { email: formData.email, password: formData.password }
         : {

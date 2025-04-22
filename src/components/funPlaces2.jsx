@@ -17,16 +17,19 @@ const categories = [
 const FunPlaces = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-full text-center py-10">
-  
+    <div className="w-full text-center py-10 px-4">
       {/* Categories */}
       <div
-       onClick={() => navigate(`/HangoutPlaces`)}
-       className="flex justify-center gap-6 px-4 mt-3 md-4">
+        onClick={() => navigate(`/HangoutPlaces`)}
+        className="flex justify-center gap-6 flex-wrap mt-3 md:mt-4"
+      >
         {categories.map((cat, index) => (
-          <div key={index} className="relative w-60 h-75 rounded-lg overflow-hidden shadow-lg">
+          <div
+            key={index}
+            className="relative w-60 h-75 md:w-72 md:h-80 rounded-lg overflow-hidden shadow-lg mb-6"
+          >
             <img src={cat.image} alt={cat.name} className="w-full h-full object-cover" />
-            <div className="absolute bottom-0 w-full bg-black/50 text-white py-2 text-lg font-semibold">
+            <div className="absolute bottom-0 w-full bg-black/50 text-white py-2 text-sm md:text-lg font-semibold">
               {cat.name}
             </div>
           </div>
