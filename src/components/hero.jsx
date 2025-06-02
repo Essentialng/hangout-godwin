@@ -76,7 +76,7 @@ const handleSelection = (selectedSlug) => {
 
   const popularsearches = [
     {
-      key: 'mostsearch.Lounges', slug: 'launches',
+      key: 'mostsearch.Lounges', slug: 'Lounges',
     },
     {
       key: 'mostsearch.Restaurants', slug: 'restaurants',
@@ -132,7 +132,7 @@ const handleSelection = (selectedSlug) => {
         {/* Location Dropdown */}
         <div className="mt-4 inline-block">
           <button className="bg-yellow-400 text-black px-5 py-3 rounded-md shadow-md font-medium text-sm sm:text-base">
-            {t("hero.location")} ▼
+             {t("hero.location")} 
           </button>
         </div>
        </div>

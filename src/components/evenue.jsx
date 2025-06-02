@@ -18,12 +18,12 @@ const ExploreVenues = () => {
         Looking for the perfect space for your event? Whether you're planning a wedding, conference, or party, our venues offer the perfect setting. Explore now to discover spaces that can help make your event a success and unlock new revenue opportunities.
       </p>
       </div>
-      <a href="">
+      <a href="https://evenue.ng/venues">
         <button
            className="mt-6 bg-orange-600 text-white cursor-pointer hover:bg-orange-700 px-5 md:px-8 py-3 md:py-4 text-lg md:text-xl font-semibold rounded-lg shadow-lg flex items-center transition-transform transform hover:scale-105"
                   
             >
-          Visit E-Venue
+          Visit E-Venue 
         </button>
       </a>
     </div>

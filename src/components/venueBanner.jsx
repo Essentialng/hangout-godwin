@@ -14,7 +14,7 @@ const VenueBanner = () => {
         <img
           src={banner}
           alt="Venue"
-          className="w-full h-64 sm:h-52 object-cover opacity-80"
+          className="w-full h-64 sm:h-62 object-cover opacity-80"
         />
 
         <div className="absolute inset-0 flex flex-col justify-center sm:items-start items-center text-white px-5 py-4 text-center sm:text-left">
@@ -27,7 +27,7 @@ const VenueBanner = () => {
           </p>
           <button
             onClick={redirect}
-            className="bg-red-600 ml-10 mr-10  text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition"
+            className="bg-red-600 ml-10 mr-10 cursor-pointer  text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition"
           >
             Venue
           </button>

@@ -93,7 +93,7 @@ const Navbar = () => {
               onClick={handleSignin}
               className="bg-black text-white px-4 py-2 rounded"
             >
-              {t("nav.signin")}
+             Signin
             </button>
           )}
         </div>
@@ -158,7 +158,8 @@ const Navbar = () => {
           onClick={handleSignin}
           className="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition"
         >
-          {t("nav.signin")}
+          Signin
+          {/* {t("nav.signin")} */}
         </button>
       )}
     </li>

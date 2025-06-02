@@ -548,7 +548,7 @@ export default function EventDetails() {
     className="bg-gray-100 p-6 rounded-xl shadow-md"
   >
     {/* Rating Input */}
-    <Form.Item
+    {/* <Form.Item
       name="rating"
       label={<span className="font-medium text-gray-800">Your Rating</span>}
       rules={[{ required: true, message: 'Please provide a rating' }]}
@@ -556,10 +556,27 @@ export default function EventDetails() {
       <div className="bg-white p-4 rounded-lg border border-gray-300 flex justify-center shadow-sm">
         <Rate className="text-yellow-500 text-2xl" />
       </div>
-    </Form.Item>
-
+    </Form.Item> */}
+     <Form.Item
+          name="rating"
+          label={<span className="font-medium text-gray-800">Your Rating</span>}
+          rules={[{ required: true, message: 'Please provide a rating' }]}
+        >
+          <Rate className="text-yellow-500 text-2xl" />
+        </Form.Item>
+<Form.Item
+                name="comment"
+                label={<span className="font-medium text-gray-800">Your Review</span>}
+                rules={[{ required: true, message: 'Please provide a comment' }]}
+              >
+                <Input.TextArea
+                  rows={4}
+                  placeholder="Write your honest review here..."
+                  className="p-3 rounded-lg border border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition shadow-sm bg-white"
+                />
+              </Form.Item>
     {/* Comment Input */}
-    <Form.Item
+    {/* <Form.Item
       name="comment"
       label={<span className="font-medium text-gray-800">Your Review</span>}
       rules={[{ required: true, message: 'Please provide a comment' }]}
@@ -569,7 +586,8 @@ export default function EventDetails() {
         placeholder="Write your honest review here..."
         className="p-3 rounded-lg border border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition shadow-sm bg-white"
       />
-    </Form.Item>
+    </Form.Item> */}
+
 
     {/* Submit Button */}
     <Form.Item>

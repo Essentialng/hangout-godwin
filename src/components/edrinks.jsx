@@ -43,13 +43,23 @@ export default function EDrinkPage() {
         {/* Right Side */}
         <div className="w-full lg:w-2/3">
         <motion.h1 
-            initial={{ opacity: 0, y: -20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8 }}
-            className="text-center text-5xl font-bold text-black mb-8"
-            >
-            E-Drinks for Your Event
+          initial={{ opacity: 0, y: -20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8 }}
+          className="text-center text-5xl font-bold text-black mb-4"
+        >
+          E-Drinks for Your Event
         </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center text-lg text-gray-600 mb-8"
+        >
+          Discover a wide range of refreshing drinks perfect for parties, weddings, and all your special occasions.
+        </motion.p>
+
        
 
 

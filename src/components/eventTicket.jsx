@@ -26,18 +26,18 @@ const EventTickets = () => {
 
         {/* Top Button */}
         <motion.button
-          className="absolute -top-6 sm:top-1/3 left-2 sm:left-0 px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base rounded-lg bg-white text-black shadow-md transition hover:bg-red-500 hover:text-white"
-          whileHover={{ scale: 1.05 }}
+          className="absolute -top-6 sm:top-1/3 left-2 sm:left-0 px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base rounded-lg bg-white text-black shadow-md transition  "
+          
         >
-          Start a Party 🎉
+          Start a Party 
         </motion.button>
 
         {/* Bottom Button */}
         <motion.button
-          className="absolute -bottom-6 sm:bottom-1/3 right-2 sm:right-0 px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base rounded-lg bg-white text-black shadow-md transition hover:bg-red-500 hover:text-white"
-          whileHover={{ scale: 1.05 }}
+          className="absolute -bottom-6 sm:bottom-1/3 right-2 sm:right-0 px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base rounded-lg bg-white text-black shadow-md transition"
+         
         >
-          Join the Vibes 🔥
+          Join the Vibes 
         </motion.button>
       </motion.div>
 
@@ -53,9 +53,9 @@ const EventTickets = () => {
         </h2>
 
         <p className="mt-4 text-sm sm:text-lg text-gray-700 leading-relaxed text-center sm:text-left">
-          Ready for an unforgettable night filled with <strong>music, dancing, and endless fun</strong>? 🎶💃  
+          Ready for an unforgettable night filled with <strong>music, dancing, and endless fun</strong>?  
           Secure your ticket now for <strong>exclusive access</strong> to the hottest event in town.  
-          Hurry—tickets are selling fast, so grab yours today and be part of the celebration! 🎟️✨
+          Hurry—tickets are selling fast, so grab yours today and be part of the celebration!
         </p>
 
         <hr className="my-6 border-gray-300" />
@@ -65,7 +65,7 @@ const EventTickets = () => {
           className="w-full py-3 text-sm sm:text-lg cursor-pointer font-semibold bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg shadow-lg hover:from-red-600 hover:to-red-700 transition"
           whileHover={{ scale: 1.05 }}
         >
-          Explore Events and Get Your Ticket Now 🎟️
+          Explore Events and Get Your Ticket Now 
         </motion.button>
       </motion.div>
     </div>

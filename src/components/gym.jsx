@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const EventTickets = () => {
   const naviage = useNavigate();
   const redirect = ()=>{
+    window.scrollTo(0,0);
     naviage('/hangout/gyms');
   }
   return (
@@ -34,12 +35,12 @@ const EventTickets = () => {
           Elevate Your Fitness Journey
         </h1>
         <p className="mt-4 text-lg text-gray-700 leading-relaxed">
-          **Elevate Your Fitness Journey! 🏋️‍♂️🔥**
+          **Elevate Your Fitness Journey! 
           <br />
           Your health is your greatest asset, and the gym is where strength meets commitment! Whether you're looking to build muscle, improve endurance, or stay active, our gym section at Hangout is designed to keep you motivated.
         </p>
         <p className="mt-2 text-gray-600">
-          Join a community of fitness enthusiasts, track your progress, and achieve your goals in an environment that fuels success. No matter your fitness level, every step counts. Start today, stay consistent, and become the best version of yourself! 💪✨
+          Join a community of fitness enthusiasts, track your progress, and achieve your goals in an environment that fuels success. No matter your fitness level, every step counts. Start today, stay consistent, and become the best version of yourself!
         </p>
 
         <hr className="my-6 border-gray-300" />

@@ -31,7 +31,7 @@ const EventBanner = () => {
 
           <button
             onClick={redirect}
-            className=" ml-5 mr-5 sm:mt-6 bg-red-600 hover:bg-red-700 text-white px-5 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition"
+            className=" ml-10 mr-5 cursor-pointer sm:mt-6 bg-red-600 hover:bg-red-700 text-white px-5 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition"
           >
             Discover Events
           </button>

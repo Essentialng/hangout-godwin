@@ -1,11 +1,14 @@
 import { Facebook, Instagram, LinkedIn, Close } from "@mui/icons-material";
 import logo from '../assets/hangout.png';
 import { useNavigate } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 const Footer = () => {
   const navigate = useNavigate();
   const handleRedirect =()=>{navigate('AboutUs')}
   const handleSignin2 =()=>{navigate('/')}
+
+
   
   return (
     <footer className="bg-orange-800 text-white p-10">
@@ -24,11 +27,29 @@ const Footer = () => {
         <div>
           <h3 className="text-3xl font-semibold">SERVICES</h3>
           <ul className="text-sm mt-2 space-y-1">
-            {['Events', 'Hangout Place', 'Lovers Place', 'Services Provider', 'Go-Live', 'Entertainment', 'e-Ads',].map((service, index) => (
-              <li key={index}>{service}</li>
+            {[
+              { name: 'Events', path: '/Live'},
+              { name: 'Hangout Place', path: '/HangoutPlaces' },
+              { name: 'Lovers Place', path: '/loversPlaces' },
+              { name: 'Services Provider', path: '/ServiceProvidersHome' },
+              { name: 'Go-Live', path: '/Golive' },
+              { name: 'e-Ads', path: '/AdsSub' },
+            ].map((service, index) => (
+              <li 
+                key={index} 
+                onClick={() => {
+                  navigate(service.path);
+                  window.scrollTo(0, 0);
+                }} 
+                        
+                className="cursor-pointer hover:underline"
+              >
+                {service.name}
+              </li>
             ))}
           </ul>
         </div>
+
 
         {/* Policies Section */}
         <div>

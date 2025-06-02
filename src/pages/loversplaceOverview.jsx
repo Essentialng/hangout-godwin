@@ -96,7 +96,8 @@ export default function HangoutOverview() {
       const userId = localStorage.getItem("user_id"); 
       const token = localStorage.getItem("auth_token"); 
       
-  
+    console.log('rat', values.rating)
+    console.log('comment',values.comment)
       if (!userId) {
           return alert("User is not logged in.");
       }
@@ -332,14 +333,12 @@ export default function HangoutOverview() {
         >
           {/* Rating Input */}
           <Form.Item
-            name="rating"
-            label={<span className="font-medium text-gray-800">Your Rating</span>}
-            rules={[{ required: true, message: 'Please provide a rating' }]}
-          >
-            <div className="bg-white p-4 rounded-lg border border-gray-300 flex justify-center shadow-sm">
-              <Rate className="text-yellow-500 text-2xl" />
-            </div>
-          </Form.Item>
+  name="rating"
+  label={<span className="font-medium text-gray-800">Your Rating</span>}
+  rules={[{ required: false, message: 'Please provide a rating' }]}
+>
+  <Rate className="text-yellow-500 text-2xl" />
+</Form.Item>
       
           {/* Comment Input */}
           <Form.Item
