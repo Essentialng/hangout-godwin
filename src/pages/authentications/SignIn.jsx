@@ -25,6 +25,23 @@ export default function AuthForm() {
   const redirectHome = () => navigate("/");
   const redirectLogin = () => navigate("/SignIn");
 
+
+  const registerWithEssentialAuth = async () =>{
+    try {
+      const response = await axios.post("https://auth.edirect.ng/api/register", {
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        email: formData.email,
+        password: formData.password,
+      }, {
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log("Essential Auth Registration Success and data send to Essential Auth:", response.data);
+    } catch (err) {
+      console.error("Essential Auth Registration Error:", err);
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -35,6 +52,7 @@ export default function AuthForm() {
     if (forgotPassword) {
       url = `${API_ROUTE}forgot-password/`;
       payload = { email: formData.email };
+      
     } else {
       url = isLogin ? `${API_ROUTE}login/` : `${API_ROUTE}signup/`;
       payload = isLogin
@@ -55,7 +73,7 @@ export default function AuthForm() {
       if (isLogin) {
         toast.success("Login successful!", { position: "top-right", autoClose: 3000 });
 
-        const { token, user } = response.data; // ✅ Extract from response.data
+        const { token, user } = response.data; 
 
         if (token && user) {
           const userData = {
@@ -79,6 +97,8 @@ export default function AuthForm() {
         setTimeout(()=>navigate('/'), 2000);
       } else {
         toast.success("Registration successful! Login to continue.", { position: "top-right", autoClose: 3000 });
+        await registerWithEssentialAuth();
+      
         redirectLogin();
       }
 

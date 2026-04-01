@@ -8,4 +8,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp; // ✅ Make sure this is here
+export default SignUp; 
