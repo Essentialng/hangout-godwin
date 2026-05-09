@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import WelcomeModal from "../components/welcomeModal"; // Import the popup component
+import WelcomeModal from "../components/welcomeModal";
 import Hero from '../components/hero';
 import EssentialBrand from '../components/essentialBrand';
 import Herro2 from '../components/herro2';

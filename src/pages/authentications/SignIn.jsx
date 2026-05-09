@@ -84,7 +84,7 @@ export default function AuthForm() {
             last_name: user.last_name,
           };
 
-          // ✅ Store in localStorage
+        
           localStorage.setItem("auth_token", token);
           localStorage.setItem("user_id", user.id);
           localStorage.setItem("user_data", JSON.stringify(userData));

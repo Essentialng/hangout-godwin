@@ -44,7 +44,7 @@ import Efood from './components/efood';
 import EventPostSelection from './pages/eventPostSelection';
 import CreateOrganizerEvent from './pages/createOrganizerEvent';
 import EDrinkPage from './components/edrinks';
-import './i18n'; // <- important!
+import './i18n'; 
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './pages/languageSwitch';
 

@@ -9,6 +9,6 @@ export default defineConfig({
     tailwindcss(),
   ],
   define: {
-    global: "window", // Fix global reference issue
+    global: "window", 
   },
 })

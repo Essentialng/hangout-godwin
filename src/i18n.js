@@ -47,7 +47,7 @@ i18n
     fallbackLng: 'en',
     detection: {
       order: ['localStorage', 'navigator', 'htmlTag'],
-      caches: ['localStorage'], // so switch is remembered
+      caches: ['localStorage'], 
     },
     interpolation: {
       escapeValue: false,
