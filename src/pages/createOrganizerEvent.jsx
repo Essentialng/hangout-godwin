@@ -5,7 +5,6 @@ import {motion} from 'framer-motion';
 import successAnimation from '../assets/Animation - 1743917678990.json'; 
 import Lottie from "lottie-react";
 
-// Modal component
 const SuccessModal = ({ onClose }) => (
   <div className="fixed inset-0 bg-black/80 bg-opacity-50 flex items-center justify-center z-50">
     <motion.div

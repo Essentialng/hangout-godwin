@@ -45,9 +45,9 @@ const Showcase = () => {
   return (
     <div className="bg-white min-h-screen text-gray-900">
       
-      {/* Hero Section */}
+      
       <section className="flex flex-col md:flex-row items-center justify-between px-4 md:px-20 py-16 bg-white">
-  {/* Left Section */}
+  
   <div className="md:w-1/2 text-left space-y-6">
     <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
       Where All The Fun <span className="text-orange-600">Memories Begin</span>

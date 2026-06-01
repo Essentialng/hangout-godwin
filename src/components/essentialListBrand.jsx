@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Import the AOS styles
+import "aos/dist/aos.css"; 
 import brand1 from "../assets/2390316s.jpg";
 import brand2 from "../assets/direct.jpg";
 import brand3 from "../assets/plan.jpg";
@@ -41,8 +41,8 @@ const companies = [
 const CompanySection = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration
-      once: true, // Trigger animation only once when it comes into view
+      duration: 1000, 
+      once: true, 
     });
   }, []);
 

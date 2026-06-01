@@ -91,7 +91,7 @@ const ServiceProviderProfile = () => {
           },
           {
               headers: {
-                  Authorization: `Token ${token}`, // ✅ Include authentication token
+                  Authorization: `Token ${token}`, 
                   "Content-Type": "application/json"
               }
           }
@@ -120,7 +120,7 @@ useEffect(() => {
     console.log('user_data:', userData);
     console.log('First Name:', userData.first_name);
     setUserMail(userData.email);
-    setUserName(`${userData.first_name} ${userData.last_name}`); // Combine first and last name
+    setUserName(`${userData.first_name} ${userData.last_name}`);
     setUserID(userData.id);
   }
 }, []);
@@ -170,12 +170,12 @@ const handleShare = () => {
     navigator.share({
       title: 'Make-Up',
       text: message,
-      url: window.location.href, // Current page URL to share
+      url: window.location.href, 
     })
     .then(() => console.log('Property shared successfully'))
     .catch((error) => console.error('Error sharing product:', error));
   } else {
-    // Fallback for unsupported browsers
+   
     const shareUrl = `https://twitter.com/intent/tweet?text=Check out this product: ${title}&url=${window.location.href}`;
     window.open(shareUrl, '_blank');
   }
@@ -185,7 +185,6 @@ const handleShare = () => {
 
   return (
     <div className="max-w-5xl mx-auto p-6 bg-white rounded-2xl">
-      {/* Profile Header */}
      
       <div className="flex flex-col md:flex-row gap-6 items-start bg-gradient-to-r from-gray-50 to-white p-6 rounded-2xl shadow-md">
         {provider.images?.length > 0 && (

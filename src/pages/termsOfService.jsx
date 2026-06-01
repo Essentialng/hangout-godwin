@@ -18,7 +18,7 @@ const AboutUs = () => {
       ];
   return (
     <div className="bg-white text-gray-900 min-h-screen">
-      {/* Hero Section with Background Image */}
+      
       <motion.div
         initial={{ opacity: 0, y: -0 }}
         animate={{ opacity: 1, y: 0 }}

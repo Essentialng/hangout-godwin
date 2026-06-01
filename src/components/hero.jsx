@@ -21,14 +21,14 @@ const HeroSection = () => {
 
   const navigate = useNavigate();
 
-  // Array of background images for slides with titles
+  
   const slides = [
     { image: homeHero, title: "Discover Amazing Places", subtitle: "Find the best hangout spots in your city" },
     { image: homeHero2, title: "Night Life & Entertainment", subtitle: "Experience the vibrant night culture" },
     { image: homeHero3, title: "Food & Dining", subtitle: "Explore top-rated restaurants and cafes" },
   ];
 
-  // Auto-slide functionality
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setIsAnimating(true);
@@ -106,7 +106,7 @@ const HeroSection = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Slides Container */}
+      {/* Slides Container =============*/}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
           <div
@@ -125,10 +125,10 @@ const HeroSection = () => {
               transition: 'transform 8s ease-out, opacity 1s ease-in-out',
             }}
           >
-            {/* Enhanced Gradient Overlay */}
+          
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
             
-            {/* Slide Content - Text overlay */}
+            
             <div className={`absolute bottom-20 left-0 right-0 text-center transform transition-all duration-700 delay-300 ${
               currentSlide === index 
                 ? 'translate-y-0 opacity-100' 
@@ -145,10 +145,10 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Content - Fixed on top of slides */}
+    
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4">
         <div className="text-center w-full max-w-6xl mx-auto">
-          {/* Animated Title */}
+         
           <div className="animate-fade-in-up">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold max-w-4xl mx-auto leading-tight text-white drop-shadow-2xl">
               {t("hero.title")}{" "}
@@ -171,7 +171,7 @@ const HeroSection = () => {
               {t("hero.description")}
             </p>
 
-            {/* Location Dropdown */}
+            {/* Location Dropdown ======================*/}
             <div className="mt-6 inline-block">
               <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-full shadow-lg font-medium text-sm sm:text-base transition-all duration-300 transform hover:scale-105">
                 {t("hero.location")} 
@@ -179,7 +179,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Search Bar with Dropdown Suggestions */}
+         
           <div className="animate-fade-in-up animation-delay-400 relative mt-8 bg-white/95 backdrop-blur-sm rounded-full flex items-center w-full max-w-3xl mx-auto shadow-2xl p-1 hover:shadow-xl transition-shadow duration-300">
             <input
               type="text"
@@ -224,7 +224,7 @@ const HeroSection = () => {
             )}
           </div>
 
-          {/* Popular Searches */}
+    
           <div className="animate-fade-in-up animation-delay-600 mt-8 text-white">
             <p className="text-sm sm:text-base font-medium mb-3 text-white/90">
               {t('hero.popular')}
@@ -245,7 +245,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Slide Navigation Dots */}
+     
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
         {slides.map((_, index) => (
           <button
@@ -296,7 +296,7 @@ const HeroSection = () => {
         </svg>
       </button>
 
-      {/* CSS Animations - Add to your global CSS or style tag */}
+      
       <style jsx>{`
         @keyframes fadeInUp {
           from {

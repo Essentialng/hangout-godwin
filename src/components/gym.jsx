@@ -11,7 +11,7 @@ const EventTickets = () => {
   }
   return (
     <div className="flex flex-col md:flex-row items-center p-7 bg-gray-100 text-white">
-      {/* Image Section */}
+    
       <div className="relative w-full md:w-1/2">
         <motion.img
           src={gymImg}
@@ -23,8 +23,6 @@ const EventTickets = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent rounded-lg"></div>
       </div>
-
-      {/* Text Section */}
       <motion.div
         className="flex-1 p-8 md:p-12 bg-white text-black rounded-lg shadow-lg"
         initial={{ opacity: 0, x: 50 }}

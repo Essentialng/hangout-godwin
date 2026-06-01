@@ -18,7 +18,7 @@ const FunPlaces = () => {
   const navigate = useNavigate();
   return (
     <div className="w-full text-center py-10 px-4">
-      {/* Categories */}
+     
       <div
         onClick={() => navigate(`/HangoutPlaces`)}
         className="flex justify-center gap-6 flex-wrap mt-3 md:mt-4"

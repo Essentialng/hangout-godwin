@@ -114,13 +114,13 @@ const EventSelect = () => {
       <span className="text-lg text-gray-600">Premium features for organizers to boost visibility</span>
     </div>
     
-    {/* Benefit 4 */}
+    
     <div className="flex items-center  space-x-3 max-w-sm">
       <span className="text-4xl">📅</span>
       <span className="text-lg text-gray-600">Flexible event scheduling and management tools</span>
     </div>
     
-    {/* Benefit 5 */}
+   
     <div className="flex items-center space-x-3 max-w-sm">
       <span className="text-4xl">📈</span>
       <span className="text-lg text-gray-600">Advanced analytics for tracking your event's success</span>

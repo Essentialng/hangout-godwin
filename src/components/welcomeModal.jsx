@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import bannerImage from "../assets/maxresdefault.jpg"; // Replace with your actual image
+import bannerImage from "../assets/maxresdefault.jpg"; 
 
 const WelcomeModal = ({ onClose }) => {
   return (
@@ -12,11 +12,11 @@ const WelcomeModal = ({ onClose }) => {
     >
       <motion.div 
         className="bg-white rounded-2xl shadow-lg overflow-hidden w-full max-w-4xl"
-        initial={{ x: "-100vw" }} // Moves in from the left
-        animate={{ x: 0 }} // Stops at normal position
-        transition={{ type: "spring", stiffness: 100, damping: 15 }} // Smooth transition
+        initial={{ x: "-100vw" }} 
+        animate={{ x: 0 }} 
+        transition={{ type: "spring", stiffness: 100, damping: 15 }} 
       >
-        {/* Image Banner */}
+       
         <div className="relative w-full h-full md:h-90">
           <img 
             src={bannerImage} 
@@ -30,13 +30,13 @@ const WelcomeModal = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Text Content */}
+        
         <div className="p-8 text-center">
           <motion.p 
             className="text-lg md:text-xl text-gray-700 leading-relaxed"
-            initial={{ opacity: 0, x: -50 }} // Moves text in from the left
-            animate={{ opacity: 1, x: 0 }} // Stops at normal position
-            transition={{ duration: 0.8, delay: 0.3 }} // Delayed effect
+            initial={{ opacity: 0, x: -50 }} 
+            animate={{ opacity: 1, x: 0 }} 
+            transition={{ duration: 0.8, delay: 0.3 }} 
           >
             The ultimate destination to explore 
             <span className="font-semibold text-orange-500"> thrilling events</span>, 
@@ -51,8 +51,8 @@ const WelcomeModal = ({ onClose }) => {
           <motion.button 
             onClick={onClose} 
             className="mt-6 px-8 py-3 text-lg bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-600 transition-all shadow-md"
-            whileHover={{ scale: 1.05 }} // Slight pop effect on hover
-            whileTap={{ scale: 0.95 }} // Press-down effect
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }} 
           >
             Explore Now 🚀
           </motion.button>

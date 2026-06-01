@@ -40,7 +40,7 @@ export default function EDrinkPage() {
           />
         </motion.div>
 
-        {/* Right Side */}
+       
         <div className="w-full lg:w-2/3">
         <motion.h1 
           initial={{ opacity: 0, y: -20 }} 

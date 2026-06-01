@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <footer className="bg-orange-800 text-white p-10">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* About Section */}
+        
         <div>
           <img onClick={handleSignin2} className="w-60 h-40 cursor-pointer" src={logo} alt="" />
           {/* <h3 className="text-3xl font-semibold">ABOUT</h3> */}
@@ -51,7 +51,7 @@ const Footer = () => {
         </div>
 
 
-        {/* Policies Section */}
+       
         <div>
           <h3 className="text-3xl font-semibold">POLICIES</h3>
           <ul onClick={() =>navigate('/TermsOfService')} className="text-sm mt-2 space-y-1 cursor-pointer">

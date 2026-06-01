@@ -13,7 +13,7 @@ const NonprofitHeroSection = () => {
 
   return (
     <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] mt-10">
-      {/* Background Image */}
+      {/* Background Image================ */}
       <img
         src={banner2}
         alt="Live Streaming"
@@ -25,7 +25,7 @@ const NonprofitHeroSection = () => {
         className="absolute inset-0 bg-black/70"
       ></div>
 
-      {/* Main Content */}
+    
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 md:px-10">
       <motion.h2
         className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-orange-600 mt-4 sm:mt-6 md:mt-8 font-bold leading-tight"
@@ -36,7 +36,7 @@ const NonprofitHeroSection = () => {
         Explore Fast Food Near You
       </motion.h2>
 
-        {/* Scrollable list on mobile, grid on larger screens */}
+       
         <motion.div
           className="mt-4 mb-6 w-full max-w-7xl"
           initial={{ opacity: 0 }}

@@ -60,7 +60,7 @@ const NewListings = () => {
 
   return (
     <div className="w-full px-6 py-10 max-w-7xl mx-auto">
-      {/* Header */}
+    
       <div className="flex flex-col sm:flex-row justify-center ml-5 items-center bg-white p-6 mb-8">
         <h2 className="text-3xl font-bold text-gray-800">
     {/* <div style={{ width: "100%", height: "400px" }}>
@@ -107,13 +107,12 @@ const NewListings = () => {
               <h3 className="text-xl font-bold text-gray-800">{hotel.name}</h3>
               <p className="text-gray-500">{hotel.location}</p>
               
-              {/* Rating */}
               <div className="flex items-center mt-3">
                 <span className="text-lg font-bold text-yellow-500">{hotel.rating}★ ★ ★ ★</span>
                 <p className="text-gray-500 text-sm ml-2">{hotel.reviews}</p>
               </div>
 
-              {/* Price */}
+             
               <p className="text-xl font-semibold mt-3 text-gray-900">{hotel.price}</p>
             </div>
           </div>

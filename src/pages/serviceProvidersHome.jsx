@@ -13,7 +13,7 @@ const ServiceProviders = () => {
 
   useEffect(() => {
     const fetchProviders = async () => {
-      setIsLoading(true); // Start loading when component is mounted
+      setIsLoading(true); 
       try {
         const response = await axios.get(`${API_ROUTE}/service-providers/`);
         setProviders(response.data);

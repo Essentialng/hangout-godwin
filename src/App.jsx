@@ -47,6 +47,8 @@ import EDrinkPage from './components/edrinks';
 import './i18n'; 
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './pages/languageSwitch';
+import Hotel from './pages/ehotel';
+import EHotelDetail from './pages/eHotelDetail';
 
 function App() {
 
@@ -101,6 +103,8 @@ function App() {
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/ServiceProvidersHome" element={<ServiceProvidersHome />} />
         <Route path="/ServiceProviderDetails/:slug" element={<ServiceProviderDetails />} />
+        <Route path="/hotel" element={<Hotel />} />
+        <Route path="/HotelDetail" element={<EHotelDetail />} />
       </Routes>
       <Footer />
     </Router>

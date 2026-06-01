@@ -10,7 +10,7 @@ export default function ChangePassword() {
   const navigate = useNavigate();
   const { uid, token } = useParams();
   const [formData, setFormData] = useState({
-    password: "" // Match the backend expected key
+    password: "" 
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

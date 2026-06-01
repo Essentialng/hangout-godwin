@@ -6,7 +6,7 @@ import gd from '../assets/about.jpg';
 const ContactUs = () => {
   return (
     <div className="bg-gray-50 text-gray-900 min-h-screen">
-      {/* Hero Section */}
+     
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -28,7 +28,6 @@ const ContactUs = () => {
         </div>
       </motion.div>
 
-      {/* Contact Information */}
       <div style={{marginTop:-120}} className="container relative mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-10">
         {[{
           icon: <Phone fontSize="large" className="text-blue-600" />, title: "Call Us",

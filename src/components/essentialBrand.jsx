@@ -50,7 +50,7 @@ const EssentialBrand = () => {
         {t('partners.description')}
       </p>
 
-      {/* Scrolling Brands Container */}
+     
       <div className="relative overflow-hidden mt-6">
         <motion.div
           className="flex space-x-6 sm:space-x-10 items-center"

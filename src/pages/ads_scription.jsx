@@ -67,7 +67,7 @@ const AdsSub = () => {
 
   // Payment method based on country
   const getPaymentMethod = (countryCode) => {
-    const paystackCountries = ["NG", "GH", "ZA"]; // Example: Nigeria, Ghana, South Africa
+    const paystackCountries = ["NG", "GH", "ZA"];
     return paystackCountries.includes(countryCode) ? "Paystack" : "Flutterwave";
   };
 
@@ -162,11 +162,11 @@ const AdsSub = () => {
 
   // Payment method based on country
   const getPaymentMethod2 = (countryCode) => {
-    const paystackCountries = ["NG", "GH", "ZA"]; // Example: Nigeria, Ghana, South Africa
+    const paystackCountries = ["NG", "GH", "ZA"]; 
     return paystackCountries.includes(countryCode) ? "Paystack" : "Flutterwave";
   };
 
-  const supportedPaystackMethods = ["NG", "GH", "ZA"]; // Nigeria, Ghana (example)
+  const supportedPaystackMethods = ["NG", "GH", "ZA"]; 
   const isPaystackSupported = supportedPaystackMethods.includes('Paystack');
 
 

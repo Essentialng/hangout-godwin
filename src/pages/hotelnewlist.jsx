@@ -567,16 +567,12 @@ const HotelListing = () => {
 
              
               <button
-               onClick={() => setIsModalOpen(true)} 
-               className="mt-6 w-full bg-orange-500 text-white py-3 rounded-lg font-bold hover:bg-orange-600 transition duration-300 shadow-md">
-                Reserve Now
-              </button>
-              {/* Contact */}
-              {/* <div className="bg-white p-6 rounded-2xl mt-4 flex items-center justify-between">
-                <button className="flex items-center border border-gray-300 px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300 w-full">
-                  <Phone className="mr-2 text-yellow-500" /> Contact Hotel
-                </button>
-              </div> */}
+  onClick={() => window.open('https://ebnbhotel.com/', '_blank', 'noopener,noreferrer')}
+  className="mt-6 w-full bg-orange-500 text-white py-3 rounded-lg font-bold hover:bg-orange-600 transition duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
+>
+  Explore it in EBNB
+</button>
+              
             </div>
           </div>
         </div>
