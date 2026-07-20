@@ -1274,7 +1274,7 @@ const PremiumHangoutPage = () => {
     }
   };
 
-  // Helper function to get correct image URL
+  
   const getImageUrl = (imagePath) => {
     if (!imagePath) return bannerImage;
     if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
@@ -1304,7 +1304,7 @@ const PremiumHangoutPage = () => {
         setPlaces(places);
       }
     } catch (error) {
-      console.log("Error fetching data", error);
+      //console.log("Error fetching data", error);
     }
   };
 
