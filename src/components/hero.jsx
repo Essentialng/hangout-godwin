@@ -129,18 +129,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
             
             
-            <div className={`absolute bottom-20 left-0 right-0 text-center transform transition-all duration-700 delay-300 ${
-              currentSlide === index 
-                ? 'translate-y-0 opacity-100' 
-                : 'translate-y-10 opacity-0'
-            }`}>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
-                {slide.title}
-              </h2>
-              <p className="text-lg sm:text-xl text-gray-200">
-                {slide.subtitle}
-              </p>
-            </div>
+            
           </div>
         ))}
       </div>
@@ -170,13 +159,7 @@ const HeroSection = () => {
             <p className="text-base sm:text-lg md:text-xl mt-4 text-white/90 drop-shadow-lg">
               {t("hero.description")}
             </p>
-
-            {/* Location Dropdown ======================*/}
-            <div className="mt-6 inline-block">
-              <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-full shadow-lg font-medium text-sm sm:text-base transition-all duration-300 transform hover:scale-105">
-                {t("hero.location")} 
-              </button>
-            </div>
+           
           </div>
 
          

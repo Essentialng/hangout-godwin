@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const { i18n, t } = useTranslation();
   const [user, setUser] = useState(null);
@@ -16,6 +17,13 @@ const Navbar = () => {
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
     setIsLoggedIn(!!token);
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleSignin = () => navigate("/Signin");
@@ -39,13 +47,24 @@ const Navbar = () => {
     { key: "nav.business", path: "/PostEvent" },
   ];
 
+  const languages = [
+    { code: "en", name: "English", flag: "🇬🇧" },
+    { code: "fr", name: "French", flag: "🇫🇷" },
+    { code: "es", name: "Spanish", flag: "🇪🇸" },
+    { code: "de", name: "German", flag: "🇩🇪" },
+  ];
+
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;
     i18n.changeLanguage(selectedLanguage);
   };
 
   return (
-    <nav className="bg-yellow-500 relative z-50">
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
+    >
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
         <div onClick={() => navigate("/")} className="cursor-pointer">
@@ -58,7 +77,9 @@ const Navbar = () => {
             <li key={index}>
               <a
                 href={link.path}
-                className="text-red-600 font-bold hover:text-gray-700 transition duration-300"
+                className={`font-bold hover:text-gray-700 transition duration-300 ${
+                  isScrolled ? "text-red-600" : "text-white"
+                }`}
                 style={{ fontSize: 19 }}
               >
                 {t(link.key)}
@@ -71,12 +92,18 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-2">
           <select
             onChange={handleLanguageChange}
-            className="bg-white text-gray-700 p-1 rounded-md"
+            value={i18n.language}
+            className={`p-1 rounded-md transition-colors duration-300 ${
+              isScrolled 
+                ? "bg-gray-100 text-gray-700" 
+                : "bg-white/20 text-white backdrop-blur-sm"
+            }`}
           >
-            <option value="en">English</option>
-            <option value="fr">French</option>
-            <option value="es">Spanish</option>
-            <option value="de">German</option>
+            {languages.map((lang) => (
+              <option key={lang.code} value={lang.code} className="text-gray-700">
+                {lang.flag} {lang.name}
+              </option>
+            ))}
           </select>
 
           {isLoggedIn ? (
@@ -85,87 +112,101 @@ const Navbar = () => {
                 onClick={dashboard}
                 src={Avatar}
                 alt="Profile"
-                className="w-10 h-10 rounded-full border border-gray-300"
+                className="w-10 h-10 rounded-full border-2 border-white shadow-sm"
               />
             </div>
           ) : (
             <button
               onClick={handleSignin}
-              className="bg-black text-white px-4 py-2 rounded"
+              className={`px-4 py-2 rounded transition-colors duration-300 ${
+                isScrolled 
+                  ? "bg-black text-white hover:bg-gray-800" 
+                  : "bg-white text-black hover:bg-gray-100"
+              }`}
             >
-             Signin
+              Signin
             </button>
           )}
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu}>
-            {isOpen ? <X className="text-white w-6 h-6" /> : <Menu className="text-white w-6 h-6" />}
+          <button onClick={toggleMenu} className="p-1">
+            {isOpen ? (
+              <X className={`w-6 h-6 ${isScrolled ? "text-black" : "text-white"}`} />
+            ) : (
+              <Menu className={`w-6 h-6 ${isScrolled ? "text-black" : "text-white"}`} />
+            )}
           </button>
         </div>
       </div>
 
       {/* Mobile Navigation Menu */}
       <AnimatePresence>
-      {isOpen && (
-  <motion.ul
-    initial={{ opacity: 0, y: -10 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -10 }}
-    className="md:hidden flex flex-col space-y-4 bg-yellow-400 rounded-b-xl shadow-lg px-6 py-6"
-  >
-    {navLinks.map((link, index) => (
-      <li key={index}>
-        <a
-          href={link.path}
-          className="block text-red-700 font-semibold text-lg hover:text-red-900 transition duration-300"
-          onClick={() => setIsOpen(false)}
-        >
-          {t(link.key)}
-        </a>
-      </li>
-    ))}
+        {isOpen && (
+          <motion.ul
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className={`md:hidden flex flex-col space-y-4 shadow-lg px-6 py-6 ${
+              isScrolled 
+                ? "bg-white" 
+                : "bg-white/95 backdrop-blur-lg"
+            }`}
+          >
+            {navLinks.map((link, index) => (
+              <li key={index}>
+                <a
+                  href={link.path}
+                  className="block text-red-600 font-semibold text-lg hover:text-red-800 transition duration-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t(link.key)}
+                </a>
+              </li>
+            ))}
 
-    <li className="pt-2">
-      <label className="text-gray-700 font-medium text-sm mb-1 block">🌐 {t("nav.language")}</label>
-      <select
-        onChange={handleLanguageChange}
-        className="w-full bg-white text-gray-700 px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
-      >
-        <option value="en">English</option>
-        <option value="fr">French</option>
-        <option value="es">Spanish</option>
-        <option value="de">German</option>
-      </select>
-    </li>
+            <li className="pt-2">
+              <label className="text-gray-700 font-medium text-sm mb-1 block">
+                🌐 {t("nav.language")}
+              </label>
+              <select
+                onChange={handleLanguageChange}
+                value={i18n.language}
+                className="w-full bg-gray-100 text-gray-700 px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+              >
+                {languages.map((lang) => (
+                  <option key={lang.code} value={lang.code}>
+                    {lang.flag} {lang.name}
+                  </option>
+                ))}
+              </select>
+            </li>
 
-    <li className="pt-4">
-      {isLoggedIn ? (
-        <div
-          onClick={dashboard}
-          className="flex items-center space-x-3 cursor-pointer"
-        >
-          <img
-            src={Avatar}
-            alt="Profile"
-            className="w-10 h-10 rounded-full border border-gray-300"
-          />
-          <span className="text-gray-800 font-medium">Dashboard</span>
-        </div>
-      ) : (
-        <button
-          onClick={handleSignin}
-          className="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition"
-        >
-          Signin
-          {/* {t("nav.signin")} */}
-        </button>
-      )}
-    </li>
-  </motion.ul>
-)}
-
+            <li className="pt-4">
+              {isLoggedIn ? (
+                <div
+                  onClick={dashboard}
+                  className="flex items-center space-x-3 cursor-pointer"
+                >
+                  <img
+                    src={Avatar}
+                    alt="Profile"
+                    className="w-10 h-10 rounded-full border-2 border-gray-300"
+                  />
+                  <span className="text-gray-800 font-medium">Dashboard</span>
+                </div>
+              ) : (
+                <button
+                  onClick={handleSignin}
+                  className="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition"
+                >
+                  Signin
+                </button>
+              )}
+            </li>
+          </motion.ul>
+        )}
       </AnimatePresence>
     </nav>
   );

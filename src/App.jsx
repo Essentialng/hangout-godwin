@@ -8,6 +8,7 @@ import SearchResults from './pages/searchResults';
 import Golive from './pages/go_live';
 import HangoutShowcase from './pages/hangoutShowcase';
 import AboutUs from './pages/aboutUs';
+import HangoutPartnerFinder from './components/HangoutFinders';
 import LounchPage from './pages/lounchPage';
 import HotelsNewListing from './pages/hotelsNewListing';
 import Hotelnewlist from './pages/hotelnewlist';
@@ -49,6 +50,7 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './pages/languageSwitch';
 import Hotel from './pages/ehotel';
 import EHotelDetail from './pages/eHotelDetail';
+import Shortfeed from './pages/Shortfeed';
 
 function App() {
 
@@ -86,6 +88,7 @@ function App() {
         <Route path="/change-password/:uid/:token/" element={<ResetPassword />} />
         <Route path="/PostEvent" element={<PostEvent />} />
         <Route path="/Gym" element={<Gym />} />
+        <Route path="/HangoutPartnerFinder" element={<HangoutPartnerFinder />} />
         <Route path="/Userdasboard" element={<Userdasboard />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/HangoutShowcase" element={<HangoutShowcase />} />
@@ -105,6 +108,7 @@ function App() {
         <Route path="/ServiceProviderDetails/:slug" element={<ServiceProviderDetails />} />
         <Route path="/hotel" element={<Hotel />} />
         <Route path="/HotelDetail" element={<EHotelDetail />} />
+        <Route path="/Shortfeed" element={<Shortfeed />} />
       </Routes>
       <Footer />
     </Router>
@@ -117,7 +121,6 @@ function App() {
 function ConditionalHeader() {
   const location = useLocation();
 
-  // List of routes where the header should be hidden
   const hideHeaderRoutes = ['/signin', '/signup', '/forgotpassword'];
 
   if (hideHeaderRoutes.includes(location.pathname.toLowerCase())) {
