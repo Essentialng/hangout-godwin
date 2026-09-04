@@ -104,7 +104,7 @@ const FloatingMessageButton = () => {
           <button
             onClick={toggleChat}
             className="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 flex items-center justify-center group"
-            style={{ width: '80px', height: '80px' }}
+            style={{ width: '60px', height: '60px' }}
           >
             {isMinimized ? (
               <Maximize2 size={28} />
@@ -112,8 +112,8 @@ const FloatingMessageButton = () => {
             ) : (
                 <div className="text-center space-y-1 mx-auto">
                     
-                     <MessageCircle style={{marginLeft:10}} size={28} className="animate-bounce" />
-                     <span className="text-white font-medium">Showa</span>
+                     <MessageCircle style={{marginLeft:0}} size={28} className="" />
+                     
             </div>
              
             )}

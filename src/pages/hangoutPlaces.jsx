@@ -313,7 +313,7 @@ const PremiumHangoutPage = () => {
           backgroundImage: `url('/images/1865104_740x550.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          height: 400,
+          height: 800,
         }}
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}

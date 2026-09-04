@@ -322,7 +322,7 @@ const PremiumLoversPage = () => {
           backgroundImage: `url('/images/maxresdefault (14).jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          height: 280,
+          height: 480,
         }}
       >
         <div className="absolute inset-0 bg-black/70"></div>

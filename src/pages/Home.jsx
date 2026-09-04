@@ -81,7 +81,7 @@ const Home = () => {
               // Use cached if less than 1 hour old
               if (Date.now() - cachedLocation.timestamp < 3600000) {
                 setUserLocation({ lat: cachedLocation.lat, lng: cachedLocation.lng });
-                console.log("📍 Using cached location:", cachedLocation);
+                console.log(" Using cached location:", cachedLocation);
               }
             }
           },
