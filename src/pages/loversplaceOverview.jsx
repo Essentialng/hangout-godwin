@@ -978,7 +978,7 @@ export default function HangoutOverview() {
             </div>
             <div>
               <h3 className="text-2xl font-bold text-gray-900">Share Your Experience</h3>
-              <p className="text-gray-500 text-sm">Help others by sharing your honest review</p>
+              <p className="text-gray-500 text-sm">Help others by sharing your honest review.</p>
             </div>
           </div>
 
